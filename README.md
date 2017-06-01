@@ -1,6 +1,6 @@
-# badr
+# cbar
 
-Bayesian Anomaly Detection in R
+Contextual Bayesian Anomaly Detection in R
 
 Forked project of [CausalImpact](https://github.com/google/CausalImpact); but
 implemented differently.

@@ -17,7 +17,7 @@ bsts_spec_static <- function(.data, ...) {
        state.specification = ss,
        expected.model.size = xx,
        expected.r2 = xx,
-       prior.df = xx
+       prior.df = xx,
        model.options = xx)
 }
 

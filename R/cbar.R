@@ -1,6 +1,8 @@
-#' @param .data
-#' @param pre.period
-#' @param post.period
+#' Detect anomaly
+#'
+#' @param .data data table
+#' @param pre.period vector
+#' @param post.period vector
 #' @param ... params for \code{bsts_model}
 #' @export
 badr <- function(.data, pre.period, post.period,
@@ -9,7 +11,7 @@ badr <- function(.data, pre.period, post.period,
 
   res <- check_data(.data, pre.period, post.period)
 
-  .model <- bsts_model(...)
+  .model <- bsts_model(.data, ...)
   .pred <- inference(.model, post.period)
 
   structure(list(model = .model,

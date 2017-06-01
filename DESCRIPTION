@@ -1,12 +1,12 @@
-Package: badr
+Package: cbar
 Type: Package
 Version: 0.00.01
 Date: 2017-06-01
 Author: Kim Seonghyun [aut, cre]
 Maintainer: Kim Seonghyun <shyeon.kim@scipi.net>
-Description: Bayesian Anomaly Detection in R
+Description: Contextual Bayesian Anomaly Detection in R
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.3.0)
 Imports:
     ggplot2,
     bsts
