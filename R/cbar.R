@@ -1,11 +1,11 @@
-#' Detect anomaly
+#' Detect contextual anomaly
 #'
 #' @param .data data table
 #' @param pre.period vector
 #' @param post.period vector
 #' @param ... params for \code{bsts_model}
 #' @export
-badr <- function(.data, pre.period, post.period,
+cbar <- function(.data, pre.period, post.period,
                  verbose = getOption("badr.verbose"),
                  ...) {
 
