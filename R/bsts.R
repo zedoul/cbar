@@ -29,7 +29,7 @@ bsts_spec_static <- function(.data,
                              niter = 1000,
                              model_options = NULL,
                              ...) {
-  y <- .data[, 1]
+  y <- .training_data[, 1]
 
   if (is.null(sigma_guess)) {
     sigma_guess <- 0.01 * sd(y, na.rm = TRUE)
@@ -51,8 +51,8 @@ bsts_spec_static <- function(.data,
                       sample.size = sd_prior_sample_size)
   ss <- bsts::AddLocalLevel(list(), y, sigma.prior = sd_prior)
 
-  structure(list(formula = paste0(names(.data)[1], sep = " ~ ."),
-                 data = .data,
+  structure(list(formula = paste0(names(.training_data)[1], sep = " ~ ."),
+                 data = .training_data,
                  state.specification = ss,
                  expected.model.size = expected_model_size,
                  expected.r2 = expected_r2,

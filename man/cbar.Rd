@@ -4,7 +4,8 @@
 \alias{cbar}
 \title{Detect contextual anomaly}
 \usage{
-cbar(.data, pre_period, post_period, verbose = getOption("cbar.verbose"), ...)
+cbar(.data, pre_period, post_period, apply_standardized = T,
+  verbose = getOption("cbar.verbose"), ...)
 }
 \arguments{
 \item{.data}{data table}

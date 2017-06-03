@@ -8,5 +8,3 @@ test_that("standardized and destandardized", {
                          sd(.data, na.rm = T))
   expect_true(identical(.data, orig))
 })
-
-
