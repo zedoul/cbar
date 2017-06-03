@@ -14,7 +14,7 @@ training_data <- function(.data, post_period,
     }
   }
 
-  training_data[post_period[1]:post_period[2], 1] <- NA
+  training_data[post_period[1]:post_period[2], 2] <- NA
 
   list(training_data = training_data,
        standardized_info = std_info)
