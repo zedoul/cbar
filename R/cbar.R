@@ -11,7 +11,7 @@ cbar <- function(.data, pre.period, post.period,
 
   res <- check_data(.data, pre.period, post.period)
 
-  .model <- bsts_model(.data, ...)
+  .model <- bsts_model(.data)
   .pred <- inference(.model, post.period)
 
   structure(list(model = .model,
