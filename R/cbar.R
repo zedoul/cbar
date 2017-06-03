@@ -1,20 +1,27 @@
 #' Detect contextual anomaly
 #'
 #' @param .data data table
-#' @param pre.period vector
-#' @param post.period vector
+#' @param pre_period vector
+#' @param post_period vector
 #' @param ... params for \code{bsts_model}
 #' @export
-cbar <- function(.data, pre.period, post.period,
-                 verbose = getOption("badr.verbose"),
+cbar <- function(.data, pre_period, post_period,
+                 verbose = getOption("cbar.verbose"),
                  ...) {
 
-  res <- check_data(.data, pre.period, post.period)
+  res <- check_data(.data, pre_period, post_period)
 
-  .model <- bsts_model(.data)
-  .pred <- inference(.model, post.period)
+  # Create model
+  training_data <- .data
+  training_data[post_period[1]:post_period[2], 1] <- NA
+
+  # TODO: Separate training and prediction
+  .model <- bsts_model(training_data)
+
+  # Predict counterfactual
+  .pred <- inference(.model, post_period)
 
   structure(list(model = .model,
-                 prediction = .pred),
-            class = "badr")
+                 pred = .pred),
+            class = "cbar")
 }

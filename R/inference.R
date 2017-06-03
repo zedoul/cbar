@@ -40,16 +40,19 @@ posterior_mean <- function(.model) {
   n_burn_in <- bsts::SuggestBurn(0.1, .model)
 
   stopifnot(burn_in_cnt > 0)
+
+  # state comtributions = MCMC x (trend, regression) x time
   state_contributions <- .model$state.contributions[-(1:n_burn_in), , ,
                                                     drop = F]
 
+  # aggregate trend and regression
   posterior_mean <- rowSums(aperm(state_contributions, c(1, 3, 2)),
                             dims = 2)
   posterior_mean
 }
 
 #' Get point prediction from posterior means and response trajectories
-#'
+#
 #' @param yhat response trajectories
 #' @param .posetrior_mean posterior mean values
 #' @param alpha alpha
@@ -78,14 +81,11 @@ inference <- function(.model,
                       post_period,
                       destandarized = identity,
                       alpha = .05) {
-  check_model(model_bsts, y, post.period)
+  check_model(model_bsts, y, post_period)
 
   # Compute conterfactual
   y_hat <- response_trajectory(.model)
   .posterior_mean <- posterior_mean(.model)
-  point_pred <- point_prediction(y_hat, .posterior_mean, alpha)
 
-  list(y_hat = y_hat,
-       posterior_mean = .posterior_mean,
-       point_pred = point_pred)
+  point_prediction(y_hat, .posterior_mean, alpha)
 }

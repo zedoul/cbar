@@ -35,4 +35,3 @@ test_that("point_prediction", {
   expect_true(nrow(ret) == nrow(iris))
   expect_true(ncol(ret) == 3)
 })
-

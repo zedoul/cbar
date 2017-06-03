@@ -7,7 +7,7 @@
 bsts_model(.data, spec = NULL)
 }
 \arguments{
-\item{.data}{time-series data to be trained}
+\item{.data}{training set}
 
 \item{spec}{bsts model specification}
 }

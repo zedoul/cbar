@@ -1,6 +1,6 @@
 #' Create bsts model
 #'
-#' @param .data time-series data to be trained
+#' @param .data training set
 #' @param spec bsts model specification
 #' @importFrom bsts bsts
 #' @export

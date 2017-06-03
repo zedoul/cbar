@@ -4,14 +4,14 @@
 \alias{cbar}
 \title{Detect contextual anomaly}
 \usage{
-cbar(.data, pre.period, post.period, verbose = getOption("badr.verbose"), ...)
+cbar(.data, pre_period, post_period, verbose = getOption("cbar.verbose"), ...)
 }
 \arguments{
 \item{.data}{data table}
 
-\item{pre.period}{vector}
+\item{pre_period}{vector}
 
-\item{post.period}{vector}
+\item{post_period}{vector}
 
 \item{...}{params for \code{bsts_model}}
 }
