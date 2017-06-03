@@ -1,4 +1,4 @@
-context("bsts")
+context("util")
 
 test_that("standardized and destandardized", {
   .data <- iris[, 1]

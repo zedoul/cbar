@@ -1,4 +1,4 @@
-context("bsts")
+context("inference")
 
 test_that("posterior_means", {
   .data <- iris[, 1:4]

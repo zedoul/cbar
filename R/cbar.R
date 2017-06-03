@@ -50,13 +50,15 @@ cbar <- function(.data, pre_period, post_period,
   .standardized_info <- .df[["standardized_info"]]
 
   # TODO: Separate training and prediction
+  # Predict counterfactual
   .model <- bsts_model(.training_data)
 
-  # Predict counterfactual
+  # Summarise intervals and point estimates
   .pred <- inference(.model, post_period)
   if (apply_standardized) {
     .pred <- destandard_pred(.pred, .standardized_info)
   }
+  .pred <- cbind(y = .data[, 1], .pred)
 
   structure(list(model = .model,
                  pred = .pred),
