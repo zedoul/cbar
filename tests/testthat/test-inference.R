@@ -25,7 +25,7 @@ test_that("point_prediction", {
   .model <- bsts_model(.data)
 
   y_hat <- response_trajectory(.model)
-  .posetrior_mean <- posterior_mean(.model)
+  .posterior_mean <- posterior_mean(.model)
 
   ret <- point_prediction(y_hat,
                           .posterior_mean)

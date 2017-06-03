@@ -9,11 +9,11 @@
 response_trajectory <- function(.model) {
 
   # TODO: Recheck burnin rate
-  burn_in_cnt <- bsts::SuggestBurn(0.1, .model)
-  stopifnot(burn_in_cnt > 0)
+  n_burn_in <- bsts::SuggestBurn(0.1, .model)
+  stopifnot(n_burn_in > 0)
 
   # Get noise
-  sigma_obs <- .model$sigma.obs[-(1:burn_in_cnt)]
+  sigma_obs <- .model$sigma.obs[-(1:n_burn_in)]
 
   # Get the MCMC sample from the posterior predictive mean
   .posterior_mean <- posterior_mean(.model)
@@ -39,7 +39,7 @@ posterior_mean <- function(.model) {
   # TODO: Recheck burnin rate
   n_burn_in <- bsts::SuggestBurn(0.1, .model)
 
-  stopifnot(burn_in_cnt > 0)
+  stopifnot(n_burn_in > 0)
 
   # state comtributions = MCMC x (trend, regression) x time
   state_contributions <- .model$state.contributions[-(1:n_burn_in), , ,
@@ -79,7 +79,6 @@ point_prediction <- function(y_hat,
 inference <- function(.model,
                       y,
                       post_period,
-                      destandarized = identity,
                       alpha = .05) {
   check_model(model_bsts, y, post_period)
 
