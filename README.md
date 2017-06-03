@@ -1,8 +1,10 @@
+![](https://github.com/zedoul/cbar/blob/master/cbar.jpg?raw=true)
+
 # cbar
 
-Contextual Bayesian Anomaly Detection in R
+This R package focuses on tools for detecting anomaly on a time series, using
+Bayesian contextual anomaly detection.
 
-Forked project of [CausalImpact](https://github.com/google/CausalImpact); but
-implemented differently.
-
-Remember, a function either does something or calculates something; not both.
+cbar uses [bsts](https://cran.r-project.org/web/packages/bsts/index.html), so
+it is highly influenced by [CausalImpact](https://github.com/google/CausalImpact)
+for understanding, but the goal is different.
