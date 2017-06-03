@@ -6,7 +6,7 @@
 \usage{
 bsts_spec_static(.data, sigma_guess = NULL, upper_limit = NULL,
   sd_prior_sample_size = 32, expected_model_size = 3, expected_r2 = 0.8,
-  prior_df = 50, niter = 1000, model_options = NULL, ...)
+  prior_df = 50, niter = 1000, ping = 0, model_options = NULL, ...)
 }
 \arguments{
 \item{.data}{time-series data to be trained}

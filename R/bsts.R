@@ -28,6 +28,7 @@ bsts_spec_static <- function(.data,
                              expected_r2 = 0.8,
                              prior_df = 50,
                              niter = 1000,
+                             ping = 0,
                              model_options = NULL,
                              ...) {
   y <- .data[, 2]
@@ -59,6 +60,7 @@ bsts_spec_static <- function(.data,
                  expected.r2 = expected_r2,
                  prior.df = prior_df,
                  niter = niter,
+                 ping = ping,
                  model.options = model_options),
             class = "cbar.model.spec")
 }
