@@ -2,6 +2,9 @@ context("inference")
 
 test_that("posterior_means", {
   .data <- iris[, 1:4]
+  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+  .data <- cbind(datetime = datetime, .data)
+
   .model <- bsts_model(.data)
   ret <- posterior_mean(.model)
 
@@ -12,6 +15,9 @@ test_that("posterior_means", {
 
 test_that("response_trajectories", {
   .data <- iris[, 1:4]
+  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+  .data <- cbind(datetime = datetime, .data)
+
   .model <- bsts_model(.data)
   ret <- response_trajectory(.model)
 
@@ -22,6 +28,9 @@ test_that("response_trajectories", {
 
 test_that("point_prediction", {
   .data <- iris[, 1:4]
+  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+  .data <- cbind(datetime = datetime, .data)
+
   .model <- bsts_model(.data)
 
   y_hat <- response_trajectory(.model)

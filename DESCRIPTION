@@ -8,8 +8,10 @@ Description: Contextual Bayesian Anomaly Detection in R
 Depends:
     R (>= 3.3.0)
 Imports:
-    ggplot2,
-    bsts
+    Boom,
+    bsts,
+    dplyr,
+    ggplot2
 License: Apache License 2.0 | file LICENSE
 VignetteBuilder: knitr
 LazyData: true

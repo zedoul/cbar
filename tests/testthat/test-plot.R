@@ -1,6 +1,6 @@
-context("cbar")
+context("plot")
 
-test_that("cbar", {
+test_that("cbar_plot", {
   .data <- iris[, 1:4]
   datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
   .data <- cbind(datetime = datetime, .data)
@@ -8,8 +8,8 @@ test_that("cbar", {
   pre_period <- 1:100
   post_period <- 101:150
   apply_standardized = T
-  res <- cbar(.data, pre_period, post_period, apply_standardized)
-  expect_true(inherits(res, "cbar"))
+  .cbar <- cbar(.data, pre_period, post_period, apply_standardized)
+
+  .plot <- cbar_plot(.cbar)
+  expect_true(inherits(.plot, c("gg", "ggplot")))
 })
-
-

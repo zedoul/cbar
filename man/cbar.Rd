@@ -8,7 +8,7 @@ cbar(.data, pre_period, post_period, apply_standardized = T,
   verbose = getOption("cbar.verbose"), ...)
 }
 \arguments{
-\item{.data}{data table}
+\item{.data}{data table with datetime, y, and predictors}
 
 \item{pre_period}{vector}
 

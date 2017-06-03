@@ -2,12 +2,18 @@ context("bsts")
 
 test_that("bsts_spec_static", {
   .data <- iris[, 1:4]
+  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+  .data <- cbind(datetime = datetime, .data)
+
   .spec <- bsts_spec_static(.data)
   expect_true(inherits(.spec, "cbar.model.spec"))
 })
 
 test_that("bsts_model", {
   .data <- iris[, 1:4]
+  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+  .data <- cbind(datetime = datetime, .data)
+
   pre_period <- c(1, 100)
   post_period <- c(101, 150)
 
@@ -20,5 +26,4 @@ test_that("bsts_model", {
   names(.model)
   .model$coefficients
   .model$state.contributions[1000, 1:2, 145:150]
-
 })

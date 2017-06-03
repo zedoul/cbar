@@ -4,7 +4,10 @@
 \alias{cbar_plot}
 \title{Visual abstraction}
 \usage{
-cbar_plot()
+cbar_plot(.cbar)
+}
+\arguments{
+\item{.cbar}{cbar object}
 }
 \description{
 Visual abstraction

@@ -6,7 +6,8 @@ training_data <- function(.data, post_period,
   std_info <- list()
 
   if (apply_standardized) {
-    for (i in 1:ncol(training_data)) {
+    # Exclude datetime
+    for (i in 2:ncol(training_data)) {
       std_info[[i]] <- list(mean = mean(training_data[, i], na.rm = T),
                             sd = sd(training_data[, i], na.rm = T))
       training_data[, i] <- standardized(training_data[, i])
@@ -19,9 +20,9 @@ training_data <- function(.data, post_period,
        standardized_info = std_info)
 }
 
-destandard_pred <- function(.pred, .standarized_info) {
-  .mean <- .standardized_info[[1]]$mean
-  .sd <- .standardized_info[[1]]$sd
+destandard_pred <- function(.pred, .standardized_info) {
+  .mean <- .standardized_info[[2]]$mean
+  .sd <- .standardized_info[[2]]$sd
 
   for (i in 1:ncol(.pred)) {
     .pred[, i] <- destandardized(.pred[, i], .mean, .sd)
@@ -32,7 +33,7 @@ destandard_pred <- function(.pred, .standarized_info) {
 
 #' Detect contextual anomaly
 #'
-#' @param .data data table
+#' @param .data data table with datetime, y, and predictors
 #' @param pre_period vector
 #' @param post_period vector
 #' @param ... params for \code{bsts_model}
@@ -41,8 +42,9 @@ cbar <- function(.data, pre_period, post_period,
                  apply_standardized = T,
                  verbose = getOption("cbar.verbose"),
                  ...) {
+  # TODO: Use mapping for datetime and y
 
-  res <- check_data(.data, pre_period, post_period)
+  check_data(.data, pre_period, post_period)
 
   # Create model
   .df <- training_data(.data, post_period, apply_standardized)
@@ -58,7 +60,10 @@ cbar <- function(.data, pre_period, post_period,
   if (apply_standardized) {
     .pred <- destandard_pred(.pred, .standardized_info)
   }
-  .pred <- cbind(y = .data[, 1], .pred)
+
+  .pred <- cbind(datetime = .data[, 1],
+                 y = .data[, 2],
+                 .pred)
 
   structure(list(model = .model,
                  pred = .pred),

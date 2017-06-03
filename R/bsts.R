@@ -3,6 +3,7 @@
 #' @param .data training set
 #' @param spec bsts model specification
 #' @importFrom bsts bsts
+#' @importFrom dplyr select
 #' @export
 bsts_model <- function(.data, spec = NULL) {
   if (is.null(spec)) {
@@ -29,7 +30,7 @@ bsts_spec_static <- function(.data,
                              niter = 1000,
                              model_options = NULL,
                              ...) {
-  y <- .training_data[, 1]
+  y <- .data[, 2]
 
   if (is.null(sigma_guess)) {
     sigma_guess <- 0.01 * sd(y, na.rm = TRUE)
@@ -51,8 +52,8 @@ bsts_spec_static <- function(.data,
                       sample.size = sd_prior_sample_size)
   ss <- bsts::AddLocalLevel(list(), y, sigma.prior = sd_prior)
 
-  structure(list(formula = paste0(names(.training_data)[1], sep = " ~ ."),
-                 data = .training_data,
+  structure(list(formula = paste0(names(.data)[2], sep = " ~ ."),
+                 data = select(.data, -datetime),
                  state.specification = ss,
                  expected.model.size = expected_model_size,
                  expected.r2 = expected_r2,
