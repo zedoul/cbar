@@ -4,18 +4,19 @@
 \alias{cbar}
 \title{Detect contextual anomaly}
 \usage{
-cbar(.data, pre_period, post_period, apply_standardized = T,
+cbar(.data, ref_period, mea_period, apply_standardized = T,
   verbose = getOption("cbar.verbose"), ...)
 }
 \arguments{
 \item{.data}{data table with datetime, y, and predictors}
 
-\item{pre_period}{vector}
+\item{ref_period}{performance reference period}
 
-\item{post_period}{vector}
+\item{mea_period}{performance measurement period}
 
 \item{...}{params for \code{bsts_model}}
 }
 \description{
-Detect contextual anomaly
+In anomaly detection, especailly in telecommunication, we call it reference
+and measurement period
 }

@@ -10,6 +10,8 @@ bsts_spec_static(.data, sigma_guess = NULL, upper_limit = NULL,
 }
 \arguments{
 \item{.data}{time-series data to be trained}
+
+\item{...}{params for \code{bsts_model}}
 }
 \description{
 Specify bsts model for static linear regression

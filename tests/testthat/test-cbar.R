@@ -7,9 +7,9 @@ test_that("cbar", {
 
   pre_period <- 1:100
   post_period <- 101:150
-  apply_standardized = T
-  res <- cbar(.data, pre_period, post_period, apply_standardized)
+  res <- cbar(.data, pre_period, post_period)
+  expect_true(inherits(res, "cbar"))
+
+  res <- cbar(.data, pre_period, post_period, apply_standardized = F)
   expect_true(inherits(res, "cbar"))
 })
-
-

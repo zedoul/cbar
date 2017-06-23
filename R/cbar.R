@@ -1,31 +1,39 @@
-training_data <- function(.data, post_period,
-                          apply_standardized = T) {
-
-  training_data <- .data
+# TDDO: Support flexible ref and mea period
+prepare_data <- function(.data,
+                         ref_period,
+                         mea_period,
+                         apply_standardized = T) {
 
   std_info <- list()
 
   if (apply_standardized) {
     # Exclude datetime
-    for (i in 2:ncol(training_data)) {
-      std_info[[i]] <- list(mean = mean(training_data[, i], na.rm = T),
-                            sd = sd(training_data[, i], na.rm = T))
-      training_data[, i] <- standardized(training_data[, i])
+    std_info <- list(mean = mean(.data[, 2], na.rm = T),
+                     sd = sd(.data[, 2], na.rm = T))
+
+    for (i in 2:ncol(.data)) {
+      .data[, i] <- standardized(.data[, i])
     }
   }
 
-  training_data[post_period[1]:post_period[2], 2] <- NA
+  .data[mea_period, 2] <- NA
 
-  list(training_data = training_data,
-       standardized_info = std_info)
+  list(data = .data,
+       std = std_info)
 }
 
-destandard_pred <- function(.pred, .standardized_info) {
-  .mean <- .standardized_info[[2]]$mean
-  .sd <- .standardized_info[[2]]$sd
+destandard_pred <- function(.pred, .std_info) {
+  stopifnot(ncol(.pred) == length(c("point_pred",
+                                    "lower_bound",
+                                    "upper_bound")))
 
-  for (i in 1:ncol(.pred)) {
-    .pred[, i] <- destandardized(.pred[, i], .mean, .sd)
+  if (!is.null(.std_info)) {
+    .mean <- .std_info$mean
+    .sd <- .std_info$sd
+
+    for (i in 1:ncol(.pred)) {
+      .pred[, i] <- destandardized(.pred[, i], .mean, .sd)
+    }
   }
 
   .pred
@@ -33,37 +41,49 @@ destandard_pred <- function(.pred, .standardized_info) {
 
 #' Detect contextual anomaly
 #'
+#' In anomaly detection, especailly in telecommunication, we call it reference
+#' and measurement period
+#'
 #' @param .data data table with datetime, y, and predictors
-#' @param pre_period vector
-#' @param post_period vector
+#' @param ref_period performance reference period
+#' @param mea_period performance measurement period
 #' @param ... params for \code{bsts_model}
 #' @export
-cbar <- function(.data, pre_period, post_period,
+cbar <- function(.data,
+                 ref_period,
+                 mea_period,
                  apply_standardized = T,
                  verbose = getOption("cbar.verbose"),
                  ...) {
-  # TODO: Use mapping for datetime and y
-
-  check_data(.data, pre_period, post_period)
+  # TODO: Check data
+  # the first column should be datetime/date and second one should be y
+  # check_data(.data, pre_period, post_period)
+  # .data should NOT have any NA value... or... I know not
 
   # Create model
-  .df <- training_data(.data, post_period, apply_standardized)
-  .training_data <- .df[["training_data"]]
-  .standardized_info <- .df[["standardized_info"]]
+  ret <- prepare_data(.data,
+                      ref_period, mea_period,
+                      apply_standardized)
+
+  target_data <- ret[["data"]]
 
   # TODO: Separate training and prediction
   # Predict counterfactual
-  .model <- bsts_model(.training_data)
+  .model <- bsts_model(target_data, ...)
 
   # Summarise intervals and point estimates
-  .pred <- inference(.model, post_period)
+  res <- inference(.model)
   if (apply_standardized) {
-    .pred <- destandard_pred(.pred, .standardized_info)
+    res <- destandard_pred(res, ret[["std"]])
   }
 
   .pred <- cbind(datetime = .data[, 1],
+                 session = c(rep("reference",
+                                length(ref_period)),
+                             rep("measurement",
+                                length(mea_period))),
                  y = .data[, 2],
-                 .pred)
+                 res)
 
   structure(list(model = .model,
                  pred = .pred),

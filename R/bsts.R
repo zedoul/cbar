@@ -2,12 +2,14 @@
 #'
 #' @param .data training set
 #' @param spec bsts model specification
+#' @param ... params for \code{bsts_spec_static}
 #' @importFrom bsts bsts
-#' @importFrom dplyr select
 #' @export
-bsts_model <- function(.data, spec = NULL) {
+bsts_model <- function(.data,
+                       spec = NULL,
+                       ...) {
   if (is.null(spec)) {
-    spec <- bsts_spec_static(.data)
+    spec <- bsts_spec_static(.data, ...)
   }
   stopifnot(inherits(spec, "cbar.model.spec"))
   class(spec) <- "list"
@@ -17,7 +19,9 @@ bsts_model <- function(.data, spec = NULL) {
 #' Specify bsts model for static linear regression
 #'
 #' @param .data time-series data to be trained
+#' @param ... params for \code{bsts_model}
 #' @importFrom bsts AddLocalLevel BstsOptions
+#' @importFrom dplyr select
 #' @importFrom Boom SdPrior
 #' @export
 bsts_spec_static <- function(.data,
@@ -54,7 +58,7 @@ bsts_spec_static <- function(.data,
   ss <- bsts::AddLocalLevel(list(), y, sigma.prior = sd_prior)
 
   structure(list(formula = paste0(names(.data)[2], sep = " ~ ."),
-                 data = select(.data, -datetime),
+                 data = dplyr::select(.data, -datetime),
                  state.specification = ss,
                  expected.model.size = expected_model_size,
                  expected.r2 = expected_r2,
@@ -65,7 +69,7 @@ bsts_spec_static <- function(.data,
             class = "cbar.model.spec")
 }
 
-#' @export
+# reserved function
 bsts_spec_dynamic <- function() {
   stop("Not implemented yet")
 }

@@ -4,12 +4,14 @@
 \alias{bsts_model}
 \title{Create bsts model}
 \usage{
-bsts_model(.data, spec = NULL)
+bsts_model(.data, spec = NULL, ...)
 }
 \arguments{
 \item{.data}{training set}
 
 \item{spec}{bsts model specification}
+
+\item{...}{params for \code{bsts_spec_static}}
 }
 \description{
 Create bsts model

@@ -1,12 +1,13 @@
 context("inference")
 
-test_that("posterior_means", {
-  .data <- iris[, 1:4]
-  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
-  .data <- cbind(datetime = datetime, .data)
+.data <- iris[, 1:4]
+datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+.data <- cbind(datetime = datetime, .data)
 
-  .model <- bsts_model(.data)
-  ret <- posterior_mean(.model)
+.model <- bsts_model(.data)
+
+test_that("posterior_means", {
+ ret <- posterior_mean(.model)
 
   # the number of burned in MCMC samples should be niter (1000)
   expect_true(nrow(ret) < 1000)
@@ -14,11 +15,6 @@ test_that("posterior_means", {
 })
 
 test_that("response_trajectories", {
-  .data <- iris[, 1:4]
-  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
-  .data <- cbind(datetime = datetime, .data)
-
-  .model <- bsts_model(.data)
   ret <- response_trajectory(.model)
 
   # the number of burned in MCMC samples should be niter (1000) - n_burn_in
@@ -27,12 +23,6 @@ test_that("response_trajectories", {
 })
 
 test_that("point_prediction", {
-  .data <- iris[, 1:4]
-  datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
-  .data <- cbind(datetime = datetime, .data)
-
-  .model <- bsts_model(.data)
-
   y_hat <- response_trajectory(.model)
   .posterior_mean <- posterior_mean(.model)
 

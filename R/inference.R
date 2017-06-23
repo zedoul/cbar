@@ -77,11 +77,7 @@ point_prediction <- function(y_hat,
 #'
 #' @export
 inference <- function(.model,
-                      y,
-                      post_period,
                       alpha = .05) {
-  check_model(model_bsts, y, post_period)
-
   # Compute conterfactual
   y_hat <- response_trajectory(.model)
   .posterior_mean <- posterior_mean(.model)

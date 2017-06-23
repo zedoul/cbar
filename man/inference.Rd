@@ -4,7 +4,7 @@
 \alias{inference}
 \title{Get inference from predictive posetrior prediction of bsts model}
 \usage{
-inference(.model, y, post_period, alpha = 0.05)
+inference(.model, alpha = 0.05)
 }
 \description{
 Get inference from predictive posetrior prediction of bsts model
