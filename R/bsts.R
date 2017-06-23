@@ -1,8 +1,9 @@
 #' Create bsts model
 #'
 #' @param .data training set
-#' @param spec bsts model specification
+#' @param spec \code{cbar.model.spec} object
 #' @param ... params for \code{bsts_spec_static}
+#' @return \code{bsts} which is a bsts model
 #' @importFrom bsts bsts
 bsts_model <- function(.data,
                        spec = NULL,
@@ -18,9 +19,20 @@ bsts_model <- function(.data,
 #' Specify bsts model for static linear regression
 #'
 #' @param .data time-series data to be trained
+#' @param sigma_guess an argument for \code{bsts::bsts}
+#' @param upper_limit an argument for \code{bsts::bsts}
+#' @param sd_prior_sample_size an argument for \code{bsts::bsts}
+#' @param expected_model_size an argument for \code{bsts::bsts}
+#' @param expected_r2 an argument for \code{bsts::bsts}
+#' @param prior_df an argument for \code{bsts::bsts}
+#' @param niter an argument for \code{bsts::bsts}
+#' @param ping an argument for \code{bsts::bsts}
+#' @param model_options an argument for \code{bsts::bsts}
 #' @param ... params for \code{bsts_model}
+#' @return \code{cbar.model.spec} object for model specification
 #' @importFrom bsts AddLocalLevel BstsOptions
 #' @importFrom dplyr select
+#' @importFrom stats sd
 #' @importFrom Boom SdPrior
 bsts_spec_static <- function(.data,
                              sigma_guess = NULL,

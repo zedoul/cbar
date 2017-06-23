@@ -6,6 +6,8 @@
 #' This one is used for lower and upper bounds
 #'
 #' @param .model \code{bsts_model}
+#' @return \code{data.frame} that contains predicted value \code{y_hat}
+#' @importFrom stats rnorm
 response_trajectory <- function(.model) {
 
   # TODO: Recheck burnin rate
@@ -33,6 +35,7 @@ response_trajectory <- function(.model) {
 #' distribution
 #'
 #' @param .model \code{bsts_model}
+#' @return \code{vector} that contains poseterior means
 posterior_mean <- function(.model) {
   stopifnot(inherits(.model, "bsts"))
 
@@ -52,10 +55,12 @@ posterior_mean <- function(.model) {
 }
 
 #' Get point prediction from posterior means and response trajectories
-#
-#' @param yhat response trajectories
-#' @param .posetrior_mean posterior mean values
+#'
+#' @param y_hat response trajectories
+#' @param .posterior_mean posterior mean values
 #' @param alpha alpha
+#' @return \code{data.frame} for predicted values
+#' @importFrom stats quantile
 point_prediction <- function(y_hat,
                              .posterior_mean,
                              alpha = .05) {

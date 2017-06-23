@@ -11,7 +11,28 @@ bsts_spec_static(.data, sigma_guess = NULL, upper_limit = NULL,
 \arguments{
 \item{.data}{time-series data to be trained}
 
+\item{sigma_guess}{an argument for \code{bsts::bsts}}
+
+\item{upper_limit}{an argument for \code{bsts::bsts}}
+
+\item{sd_prior_sample_size}{an argument for \code{bsts::bsts}}
+
+\item{expected_model_size}{an argument for \code{bsts::bsts}}
+
+\item{expected_r2}{an argument for \code{bsts::bsts}}
+
+\item{prior_df}{an argument for \code{bsts::bsts}}
+
+\item{niter}{an argument for \code{bsts::bsts}}
+
+\item{ping}{an argument for \code{bsts::bsts}}
+
+\item{model_options}{an argument for \code{bsts::bsts}}
+
 \item{...}{params for \code{bsts_model}}
+}
+\value{
+\code{cbar.model.spec} object for model specification
 }
 \description{
 Specify bsts model for static linear regression

@@ -5,6 +5,7 @@
 #' @param y_label a label for y-ayis
 #' @param seq_by increment of the sequence, which is NULL by default
 #' @return \code{ggplot} object
+#' @importFrom magrittr %>%
 #' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_vline xlab ylab
 #'             scale_x_continuous theme element_text
 #' @export
@@ -43,10 +44,9 @@ plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
 
 # reserved
 plot_error <- function(.cbar) {
-  pivot = as.numeric(input$choosetr2) - as.numeric(input$choosetr1) + 1
-  point.effect <- point.effect[pivot : length(point.effect)]
-  boxplot(as.matrix(point.effect), xlab="resource", ylab="estimation error (%)") #, ylim=c(0,1.6))
-
+#  pivot = as.numeric(input$choosetr2) - as.numeric(input$choosetr1) + 1
+#  point.effect <- point.effect[pivot : length(point.effect)]
+#  boxplot(as.matrix(point.effect), xlab="resource", ylab="estimation error (%)") #, ylim=c(0,1.6))
 }
 
 # reversed: Variable selection (each)

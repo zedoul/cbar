@@ -1,8 +1,25 @@
-# TDDO: Support flexible ref and mea period
+#' \code{cbar} package
+#'
+#' cbar: Contextual Bayesian Anomaly Detection in R
+#'
+#' See the README on
+#' \href{https://github.com/zedoul/cbar}{Github}
+#' @docType package
+#' @name cbar
+#' @importFrom magrittr %>%
+
+# quiets concerns of R CMD check re: the .'s that appear in pipelines
+if(getRversion() >= "2.15.1") {
+  utils::globalVariables(c(".", "session", "datetime", "y", "lower_bound",
+                           "upper_bound", "point_pred"))
+}
+
+#' @importFrom stats sd
 prepare_data <- function(.data,
                          ref_period,
                          mea_period,
                          apply_standardized = T) {
+  # TDDO: Support flexible ref and mea period
 
   std_info <- list()
 
@@ -51,7 +68,7 @@ destandard_pred <- function(.pred, .std_info) {
 #' @param .data data table with datetime, y, and predictors
 #' @param ref_period performance reference period
 #' @param mea_period performance measurement period
-#' @param apply_standarized whether it will standardized data or not
+#' @param apply_standardized whether it will standardized data or not
 #' @param ... params for \code{bsts_model}
 #' @export
 #' @examples

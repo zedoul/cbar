@@ -9,9 +9,12 @@ bsts_model(.data, spec = NULL, ...)
 \arguments{
 \item{.data}{training set}
 
-\item{spec}{bsts model specification}
+\item{spec}{\code{cbar.model.spec} object}
 
 \item{...}{params for \code{bsts_spec_static}}
+}
+\value{
+\code{bsts} which is a bsts model
 }
 \description{
 Create bsts model

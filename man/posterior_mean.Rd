@@ -9,6 +9,9 @@ posterior_mean(.model)
 \arguments{
 \item{.model}{\code{bsts_model}}
 }
+\value{
+\code{vector} that contains poseterior means
+}
 \description{
 This one is used for point prediction based one predictive posterior
 distribution

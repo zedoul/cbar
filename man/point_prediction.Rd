@@ -7,11 +7,14 @@
 point_prediction(y_hat, .posterior_mean, alpha = 0.05)
 }
 \arguments{
+\item{y_hat}{response trajectories}
+
+\item{.posterior_mean}{posterior mean values}
+
 \item{alpha}{alpha}
-
-\item{yhat}{response trajectories}
-
-\item{.posetrior_mean}{posterior mean values}
+}
+\value{
+\code{data.frame} for predicted values
 }
 \description{
 Get point prediction from posterior means and response trajectories

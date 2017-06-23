@@ -107,7 +107,7 @@ coef_samples <- function(.cbar) {
   coefs
 }
 
-# analytical abstraction
+#' @importFrom stats median
 coef_estimate <- function(.cbar) {
   stopifnot(inherits(.cbar, "cbar"))
   .vars <- coef_samples(.cbar)

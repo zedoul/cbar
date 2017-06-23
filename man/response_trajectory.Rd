@@ -9,6 +9,9 @@ response_trajectory(.model)
 \arguments{
 \item{.model}{\code{bsts_model}}
 }
+\value{
+\code{data.frame} that contains predicted value \code{y_hat}
+}
 \description{
 Note that \code{posterior_state_samples} returns posterior mean, whereas,
 this one returns posterior mean + noise
