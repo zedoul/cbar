@@ -1,9 +1,13 @@
-#' Visual abstraction with time series plot
+#' Print time-series plot
 #'
 #' @param .cbar cbar object
+#' @param x_label a label for x-axis
+#' @param y_label a label for y-ayis
+#' @param seq_by increment of the sequence, which is NULL by default
 #' @return \code{ggplot} object
 #' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_vline xlab ylab
 #'             scale_x_continuous theme element_text
+#' @export
 plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
   stopifnot(inherits(.cbar, "cbar"))
   target_data <- .cbar$pred

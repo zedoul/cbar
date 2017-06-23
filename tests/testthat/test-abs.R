@@ -1,4 +1,4 @@
-context("plot")
+context("abs")
 
 .data <- iris[, 1:4]
 datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
@@ -18,7 +18,7 @@ test_that("analytical abstraction", {
   expect_true(inherits(res, "data.frame"))
   res <- summarise_anomaly(.cbar)
   expect_true(inherits(res, "data.frame"))
-  res <- summarise_sessions(.cbar)
+  res <- summarise_session(.cbar)
   expect_true(inherits(res, "data.frame"))
   res <- coef_samples(.cbar)
   expect_true(inherits(res, "list"))

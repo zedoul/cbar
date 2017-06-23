@@ -7,7 +7,7 @@
 posterior_mean(.model)
 }
 \arguments{
-\item{.model}{bsts model}
+\item{.model}{\code{bsts_model}}
 }
 \description{
 This one is used for point prediction based one predictive posterior

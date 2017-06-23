@@ -39,26 +39,48 @@ destandard_pred <- function(.pred, .std_info) {
   .pred
 }
 
-#' Detect contextual anomaly
+#' Detect contextual anomaly with Bayesian Contextual Anomaly Detection in R
 #'
-#' In anomaly detection, especailly in telecommunication, we call it reference
-#' and measurement period
+#' This function generates \code{cbar} object to detect contextual anomaly and
+#' to abstract analysis output.
+#'
+#' For the input \code{.data}, note that you should use \code{datetime} for the
+#' first column name. Also, you should use \code{numeric} type for other
+#' columns.
 #'
 #' @param .data data table with datetime, y, and predictors
 #' @param ref_period performance reference period
 #' @param mea_period performance measurement period
+#' @param apply_standarized whether it will standardized data or not
 #' @param ... params for \code{bsts_model}
 #' @export
+#' @examples
+#' library(cbar)
+#'
+#' .data <- mtcars
+#' rownames(.data) <- NULL
+#' datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+#' .data <- cbind(datetime = datetime, .data)
+#'
+#' ref_session <- 1:16
+#' mea_session <- 17:nrow(.data)
+#'
+#' obj <- cbar(.data, ref_session, mea_session)
 cbar <- function(.data,
                  ref_period,
                  mea_period,
                  apply_standardized = T,
-                 verbose = getOption("cbar.verbose"),
                  ...) {
-  # TODO: Check data
-  # the first column should be datetime/date and second one should be y
-  # check_data(.data, pre_period, post_period)
-  # .data should NOT have any NA value... or... I know not
+  # TODO: Consider the possibility that we may use check_data function for this
+  stopifnot(colnames(.data)[1] == "datetime")
+  stopifnot(any(inherits(.data[, 1], "POSIXt"),
+                inherits(.data[, 1], "POSIXct"),
+                inherits(.data[, 1], "POSIXlt"),
+                inherits(.data[, 1], "character")))
+  stopifnot(all(sapply(2:ncol(.data),
+                       function(i) inherits(.data[, i], "numeric"))))
+
+  # TODO: Support flexible session names, more than reference and measurement
 
   # Create model
   ret <- prepare_data(.data,
@@ -88,4 +110,13 @@ cbar <- function(.data,
   structure(list(model = .model,
                  pred = .pred),
             class = "cbar")
+}
+
+#' Print cbar object
+#'
+#' @param x \code{cbar} object to print
+#' @param ... further arguments passed to or from other methods
+#' @export
+print.cbar <- function(x, ...) {
+  summarise_session(x)
 }

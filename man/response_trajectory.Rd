@@ -7,7 +7,7 @@
 response_trajectory(.model)
 }
 \arguments{
-\item{.model}{bsts model}
+\item{.model}{\code{bsts_model}}
 }
 \description{
 Note that \code{posterior_state_samples} returns posterior mean, whereas,

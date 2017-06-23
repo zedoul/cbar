@@ -4,7 +4,6 @@
 #' @param spec bsts model specification
 #' @param ... params for \code{bsts_spec_static}
 #' @importFrom bsts bsts
-#' @export
 bsts_model <- function(.data,
                        spec = NULL,
                        ...) {
@@ -23,7 +22,6 @@ bsts_model <- function(.data,
 #' @importFrom bsts AddLocalLevel BstsOptions
 #' @importFrom dplyr select
 #' @importFrom Boom SdPrior
-#' @export
 bsts_spec_static <- function(.data,
                              sigma_guess = NULL,
                              upper_limit = NULL,

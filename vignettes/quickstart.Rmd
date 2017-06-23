@@ -1,10 +1,15 @@
 ---
-author: "Kim Seonghyun"
 title: "Quickstart"
+author:
+- "Kim Seonghyun"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  html_document:
+      toc: true
+      toc_float: true
+      theme: flatly
 vignette: >
-  %\VignetteIndexEntry{Quick start}
+  %\VignetteIndexEntry{quickstart}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -35,143 +40,50 @@ You'll need to use `library` to load as follows:
 library(cbar)
 ```
 
-### Get Content
+### Introduction
+
+`cbar` is an R package for detecting anomaly in time-series data with Bayesian inference.
+Although there are many packages to detect anomaly in the world, relatively few packages
+provide functions for visually and/or analytically abstracting the output.
+
+The `cbar` package aims to provide simple-to-use functions for detecting anomaly, and abstracting the analysis output.
+
+### Detecting anomaly
+
+A minimal example would be like:
 
 ```{r}
 library(cbar)
 
-pre_period <- c(1, 10)
-post_period <- c(11, 32)
+.data <- mtcars
+rownames(.data) <- NULL
+datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+.data <- cbind(datetime = datetime, .data)
 
-analysis_plan <- list(
-  reference_period = "",
-  measurement_period =  "",
-)
+ref_session <- 1:16
+mea_session <- 17:nrow(.data)
 
-.data <- datetime, session,
-plan <- ref session, mea session
-
-cbar(mtcars,
-     )
-
-.url <- "http://tvtropes.org/pmwiki/pmwiki.php/Main/SenseiChan"
-content <- trope_content(.url)
-.df <- as.data.frame(content)
-head(.df[, c("category", "link")])
+.cbar <- cbar(.data, ref_session, mea_session)
+plot_ts(.cbar)
 ```
 
-The output is `tidy`, so that you can easily turn them into a plot as follows:
+You may wonder why it uses `reference` and `measurement` instead of `training` and `testing`. In anomaly detection, espeically in telecommuncation field, `performance reference period` 
+refers a period which serves a basis for defining anomaly, and `performance measurement period` refers the period during which performance parameters are measured.
+
+If you hope to see the abstracted outcome, then:
 
 ```{r}
-library(ggplot2)
-q <- ggplot(.df, aes(category)) + geom_bar() +
-       coord_flip() + ylab("Freq") + xlab("")
+summarise_session(.cbar)
 ```
 
-```{r, fig.width=7,fig.height=6}
-plot(q)
-```
-
-### Cache trope data
-
-It would be very hard to implement and to maintain data fetching module from
-the bottom. `cbar` provides easy-to-use function `trope_cache` which will check
-redirects, filtering, and data fetching automatically.
-
-Here is one example of how you can use `trope_cache`.
-
-```{r, eval = F}
-library(cbar)
-
-.urls <- c("http://tvtropes.org/pmwiki/pmwiki.php/Main/SenseiChan")
-res <- trope_cache(.urls, depth = 3, filter_pattern = "/Main/")
-```
-
-It will fetch a set of tropes starting from `.urls` in three tree-depth.
-You can set filter option, where the example uses `/Main/`, to fetch specific
-category that you are interested in.
-
-Once it cached, you can fetch those data with `trope_data` function, regardless
-of your network connection status.
-Note that cache directory is temporary given from `tempdir()` unless you set
-it by yourself with `cache_dir` parameter.
-
-### Page history analysis
-
-Apart from page analysis, cbar also provides functions for page history
-analysis. Here is the example with `Little Witch Academia` page history.
-
+or you can just use `print` function as follows:
 
 ```{r}
-library(cbar)
-library(ggplot2)
-library(dplyr)
-
-.url <- "http://tvtropes.org/pmwiki/pmwiki.php/Characters/LittleWitchAcademia"
-hist_content <- trope_history(.url)
-.data <- aggr_history_daily_count(hist_content)
-.resolution <- "1 week"
-
-# In this case, we are interested in history only after the TV release, and
-# before the episode 23
-.data <- .data[c(47:169), ]
-
-q <- ggplot(.data, aes(x = date, y = count)) +
-    geom_line(size= .8) +
-    theme(axis.text.x = element_text(angle = 50, hjust = 1, vjust = 1, size = 8),
-          plot.title = element_text(hjust = 0.5)) +
-    scale_x_date(date_breaks = .resolution) +
-    ggtitle("Edits on Little Witch Academia Main Page in TV Tropes") +
-    xlab("") + ylab("#edit")
+print(.cbar)
 ```
 
-```{r, fig.width=7,fig.height=6}
-plot(q)
-```
-
-And we can compare the impact of episode 22, with others as follows:
+If you hope to see details of those anomalies:
 
 ```{r}
-library(cbar)
-library(ggplot2)
-library(magrittr)
-
-impacts <- .data %>% group_by(date = cut(date, "week")) %>% summarise(impact = sum(count))
-impacts$date <- paste0("7 days from ", as.character(impacts$date), " (", paste("Episode", rep(1:22)), ")")
-
-q <- ggplot(impacts, aes(x = reorder(date, impact),
-                       y = impact,
-                       fill = impact)) +
-       geom_bar(stat= "identity") +
-       theme(axis.text.y = element_text(size = 6)) +
-       coord_flip() + ggtitle("Weekly edits on Little Witch Academia Characters Page in TV Tropes") +
-       ylab("") + xlab("")
+summarise_anomaly(.cbar, .session = "measurement")
 ```
-
-```{r, fig.width=7,fig.height=6}
-plot(q)
-```
-
-It is important to check the distribution of editors' commitments on the page.
-Following example shows how you can do with cbar.
-Note that this will create distribution not based on subset like previous examples,
-but on whole dataset.
-
-```{r}
-.data <- aggr_history_editor_count(hist_content)
-
-q <- ggplot(.data, aes(x = reorder(editor, count),
-                       y = count,
-                       fill = count)) +
-       geom_bar(stat= "identity") +
-       theme(axis.text.y = element_text(size = 3)) +
-       coord_flip() + ggtitle("Editors on Little Witch Academia Characters Page in TV Tropes\n",
-                              paste("from", tail(hist_content)[5, "datetime"],
-                                    "to", head(hist_content[1, "datetime"]))) +
-       ylab("") + xlab("")
-```
-
-
-```{r, fig.width=7,fig.height=6}
-plot(q)
-`

@@ -2,9 +2,5 @@
 
 # cbar
 
-This R package focuses on tools for detecting anomaly on a time series, using
+This R package focuses on tools for detecting anomaly on time series, with
 Bayesian contextual anomaly detection.
-
-cbar uses [bsts](https://cran.r-project.org/web/packages/bsts/index.html), so
-it is highly influenced by [CausalImpact](https://github.com/google/CausalImpact)
-for understanding, but the goal is different.

@@ -5,7 +5,7 @@
 #'
 #' This one is used for lower and upper bounds
 #'
-#' @param .model bsts model
+#' @param .model \code{bsts_model}
 response_trajectory <- function(.model) {
 
   # TODO: Recheck burnin rate
@@ -32,7 +32,7 @@ response_trajectory <- function(.model) {
 #' This one is used for point prediction based one predictive posterior
 #' distribution
 #'
-#' @param .model bsts model
+#' @param .model \code{bsts_model}
 posterior_mean <- function(.model) {
   stopifnot(inherits(.model, "bsts"))
 
@@ -73,9 +73,11 @@ point_prediction <- function(y_hat,
              upper_bound = upper_bound)
 }
 
-#' Get inference from predictive posetrior prediction of bsts model
+#' Infer from predictive posetrior prediction of bsts model
 #'
-#' @export
+#' @param .model \code{bsts} model
+#' @param alpha percentile for anomaly
+#' @return \code{data.frame} with observations and predictions
 inference <- function(.model,
                       alpha = .05) {
   # Compute conterfactual

@@ -2,10 +2,18 @@
 % Please edit documentation in R/inference.R
 \name{inference}
 \alias{inference}
-\title{Get inference from predictive posetrior prediction of bsts model}
+\title{Infer from predictive posetrior prediction of bsts model}
 \usage{
 inference(.model, alpha = 0.05)
 }
+\arguments{
+\item{.model}{\code{bsts} model}
+
+\item{alpha}{percentile for anomaly}
+}
+\value{
+\code{data.frame} with observations and predictions
+}
 \description{
-Get inference from predictive posetrior prediction of bsts model
+Infer from predictive posetrior prediction of bsts model
 }

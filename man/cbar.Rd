@@ -2,10 +2,9 @@
 % Please edit documentation in R/cbar.R
 \name{cbar}
 \alias{cbar}
-\title{Detect contextual anomaly}
+\title{Detect contextual anomaly with Bayesian Contextual Anomaly Detection in R}
 \usage{
-cbar(.data, ref_period, mea_period, apply_standardized = T,
-  verbose = getOption("cbar.verbose"), ...)
+cbar(.data, ref_period, mea_period, apply_standardized = T, ...)
 }
 \arguments{
 \item{.data}{data table with datetime, y, and predictors}
@@ -15,8 +14,28 @@ cbar(.data, ref_period, mea_period, apply_standardized = T,
 \item{mea_period}{performance measurement period}
 
 \item{...}{params for \code{bsts_model}}
+
+\item{apply_standarized}{whether it will standardized data or not}
 }
 \description{
-In anomaly detection, especailly in telecommunication, we call it reference
-and measurement period
+This function generates \code{cbar} object to detect contextual anomaly and
+to abstract analysis output.
+}
+\details{
+For the input \code{.data}, note that you should use \code{datetime} for the
+first column name. Also, you should use \code{numeric} type for other
+columns.
+}
+\examples{
+library(cbar)
+
+.data <- mtcars
+rownames(.data) <- NULL
+datetime <- seq(from = Sys.time(), length.out = nrow(.data), by = "mins")
+.data <- cbind(datetime = datetime, .data)
+
+ref_session <- 1:16
+mea_session <- 17:nrow(.data)
+
+obj <- cbar(.data, ref_session, mea_session)
 }
