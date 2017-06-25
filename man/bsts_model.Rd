@@ -19,3 +19,8 @@ bsts_model(.data, spec = NULL, ...)
 \description{
 Create bsts model
 }
+\references{
+Scott, S. L., & Varian, H. R. (2014). Predicting the present with
+  bayesian structural time series. International Journal of Mathematical
+  Modelling and Numerical Optimisation, 5(1-2), 4-23.
+}

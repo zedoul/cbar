@@ -5,6 +5,9 @@
 #' @param ... params for \code{bsts_spec_static}
 #' @return \code{bsts} which is a bsts model
 #' @importFrom bsts bsts
+#' @references Scott, S. L., & Varian, H. R. (2014). Predicting the present with
+#'   bayesian structural time series. International Journal of Mathematical
+#'   Modelling and Numerical Optimisation, 5(1-2), 4-23.
 bsts_model <- function(.data,
                        spec = NULL,
                        ...) {
