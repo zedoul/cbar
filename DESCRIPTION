@@ -6,8 +6,11 @@ Date: 2017-06-22
 Description: Detect contextual anomalies in time-series data with Bayesian data
   analysis. It focuses on determining a normal range of target value, and
   provides simple-to-use functions to abstract the outcome.
-Author: Kim Seonghyun [aut, cre]
-Maintainer: Kim Seonghyun <shyeon.kim@scipi.net>
+Authors@R: c(
+    person("Kim", "Seonghyun", , "zedoul@gmail.com", c("aut", "cre"))
+    )
+URL: https://github.com/zedoul/cbar
+BugReports: https://github.com/zedoul/cbar/issues
 Depends:
     R (>= 3.3.0)
 Imports:
