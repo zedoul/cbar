@@ -7,3 +7,5 @@
 
 This R package focuses on tools for detecting anomaly on time series, with
 Bayesian contextual anomaly detection.
+
+For the details, check [cbar webpage](https://zedoul.github.io/cbar/).
