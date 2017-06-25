@@ -84,32 +84,32 @@
 <div id="anomaly-detection" class="section level3">
 <h3 class="hasAnchor">
 <a href="#anomaly-detection" class="anchor"></a>Anomaly detection</h3>
-<p>Different subscriber behaviours, hardware setups, and software configurations in software generate various patterns. A team validates its functionality by strict evaluation process, such as test pass rates, trouble reports, or key performance indicators. However, absence of evidence is not an evidence of absence. It is hard to detect abnormality when unknown cases deviated from normal behaviours. The root cause for these cases might be due to unseen user behaviors, hardware malfunctions or software defects. We call this anomaly.</p>
-<p>Anomaly detection refers to the problem of finding patterns in data that do not conform to the expected behaviour occurring on a network. For example, we can identify unusual peaks and drops of traffic which are different from normal pattern. Since it is hard to conclude possible abnormal behaviours by rule-based system, a company commonly applies machine learning techniques to detect network anomaly. It is important in computer system performance mornitoring perspective, which can detect anomalies quickly and automaticallly.</p>
-<p>It is also important to point out that anomaly detection is different from intrusion detection. While both of them aim to detect significant changes, intrusion detection aims to detect policay violations rather than possible product defects.</p>
+<p>Different subscriber behaviours, hardware setups, and software configurations in the Internet service product generate various patterns. A development team validates its functionality by strict evaluation process, such as test pass rates, trouble reports, or key performance indicators. However, absence of evidence is not an evidence of absence. It is hard to detect abnormality when unknown cases deviated from normal behaviours. The root cause for these cases might be due to unseen user behaviors, hardware malfunctions or software defects. We call this anomaly.</p>
+<p>Anomaly detection refers to the problem of finding patterns in data that do not conform to the expected behaviour occurring on a network. For example, we can identify unusual peaks and drops of traffic which are different from normal pattern. Since it is hard to conclude possible abnormal behaviours by rule-based system, a company commonly applies machine learning techniques to detect anomaly. It is important in computer system performance mornitoring perspective to detect anomalies quickly and automaticallly.</p>
+<p>Note that anomaly detection is different from intrusion detection. While both of them aim to detect significant changes, intrusion detection aims to detect policay violations rather than possible product defects.</p>
 </div>
 <div id="contextual-anomaly" class="section level3">
 <h3 class="hasAnchor">
 <a href="#contextual-anomaly" class="anchor"></a>Contextual anomaly</h3>
 <p>Potential anomalies in continuous sequence can be divided into three different types.</p>
 <ul>
-<li>a point anomaly, also known as an outlier, occurs when a data point is anomalous</li>
-<li>a collective anomaly occurs when a group of data points are anomalous while each data point may not be anomaly by itself</li>
-<li>a contextual point or contextual collective anomaly occurs when a single data point is anomalous or collective data points are anomalous with regards to the context</li>
+<li>Point anomaly, also known as an outlier, occurs when a data point is anomalous</li>
+<li>Collective anomaly occurs when a group of data points are anomalous while each data point may not be an anomaly by itself</li>
+<li>Contextual point or contextual collective anomaly occurs when a single data point is anomalous or collective data points are anomalous with regards to the context</li>
 </ul>
 <p>While it is easier to discover point anomaly, it is much harder to detect contextual anomaly since we need to take the context into account in order to explain whether it is normal or abnormal. We, therefore, cannot simply judge the time-series plot by its shape if more than one contextual attributes are required to judge. A contextual anomaly detection algorithm is required to consider all the important varialbes that may explain suspicious network node behaviours.</p>
-<p>Detecting a contextual anomaly is hard as follows.</p>
+<p>Here are the more detailed reasons why detecting a contextual anomaly is hard:</p>
 <ul>
-<li>It is hard to make a generic algorithm for anomaly detection. Since the definition of abnormal behaviour is quite different from company to company, many anomaly detection algorithms have been developed for specific application to meet each company’s requirements.</li>
+<li>It is hard to make a generic algorithm for contextual anomaly. Since the definition of abnormal behaviour is quite different from company to company, many anomaly detection algorithms have been developed for specific application to meet each company’s requirements.</li>
 <li>The training data for anomaly detection system are very asymmetric since few and diverse anomalies are observed against a much larger set of normal cases. This makes it hard to detect an error when an unseen behaviour presents itself.</li>
 <li>A metric that is too sensitive to differentiate will yield many false alarms. Similarly, a metric that is not sensitive enough will yield many missed detections.</li>
-<li>A behaviour that can be considered as normal in one situation can be abnormal in other situations. There may be more than one normal behaviour, and each behaviour can be quite different depending on the context.</li>
+<li>A behaviour that can be considered as normal in one situation can be abnormal in other situations. Also, there may be more than one normal behaviour depending on domain, and each behaviour can be quite different depending on the context.</li>
 </ul>
 </div>
 <div id="bayesian-approach" class="section level3">
 <h3 class="hasAnchor">
 <a href="#bayesian-approach" class="anchor"></a>Bayesian approach</h3>
-<p>The general idea in Bayesian anomaly detection, is to build a probablistic model over normal cases, and to compare new samples with trained model when they arrived. Samples that have small probabilities of being generated by the model are considred anomalies, that is, they are very unlikely to belong to a set of normal cases. If the number of potential indicators becomes large, it becomes hard to induce the best set of indicators In worst case, the number of regressors can be larger than the number of training samples, due to data sparsity.</p>
+<p>The general idea in Bayesian anomaly detection is to build a probablistic model over normal cases, and to compare new samples with trained model when they arrived. Samples that have small probabilities of being generated by the model are considred anomalies, that is, they are very unlikely to belong to a set of normal cases. If the number of potential indicators becomes large, it becomes hard to induce the best set of indicators In worst case, the number of regressors can be larger than the number of training samples, due to data sparsity.</p>
 <p><code>cbar</code> creates a probablistic model that finds the best indicators to define context and to conclude potential network anomalies based on their context. This library depends <code>bsts</code> and <code>Boom</code>, which <a href="https://sites.google.com/site/stevethebayesian/">Steven L Scott</a> developes.</p>
 <ul>
 <li>It utilises the Bayesian approach to automatically find its best indicators among the total to reduce the dimensions of raw data.</li>
