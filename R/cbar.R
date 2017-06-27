@@ -35,7 +35,10 @@ prepare_data <- function(.data,
 
   .data[mea_period, 2] <- NA
 
-  list(data = .data,
+  target_data <- rbind(.data[ref_period, ],
+                       .data[mea_period, ])
+
+  list(data = target_data,
        std = std_info)
 }
 
@@ -116,12 +119,12 @@ cbar <- function(.data,
     res <- destandard_pred(res, ret[["std"]])
   }
 
-  .pred <- cbind(datetime = .data[, 1],
+  .pred <- cbind(datetime = target_data[, 1],
                  session = c(rep("reference",
                                 length(ref_period)),
                              rep("measurement",
                                 length(mea_period))),
-                 y = .data[, 2],
+                 y = .data[c(ref_period, mea_period), 2],
                  res)
 
   structure(list(model = .model,
