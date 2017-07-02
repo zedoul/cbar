@@ -1,5 +1,5 @@
 ---
-title: "Contextul anomaly"
+title: "Contextual anomaly"
 author:
 - "Kim Seonghyun"
 date: "`r Sys.Date()`"
@@ -9,12 +9,12 @@ output:
       toc_float: true
       theme: flatly
 vignette: >
-  %\VignetteIndexEntry{quickstart}
+  %\VignetteIndexEntry{contextual-anomaly}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-### Anomaly detection
+### anomaly detection
 
 Different subscriber behaviours, hardware setups, and software configurations in the Internet service product generate various patterns. A development team validates its functionality by strict evaluation process, such as test pass rates, trouble reports, or key performance indicators. However, absence of evidence is not an evidence of absence. It is hard to detect abnormality when unknown cases deviated from normal behaviours. The root cause for these cases might be due to unseen user behaviors, hardware malfunctions or software defects. We call this anomaly.
 
