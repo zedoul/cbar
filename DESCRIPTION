@@ -23,6 +23,7 @@ Imports:
 Suggests:
     datasets,
     knitr,
+    pkgdown,
     testthat
 License: Apache License 2.0 | file LICENSE
 VignetteBuilder: knitr

@@ -104,7 +104,8 @@
 to abstract analysis output.</p>
     
 
-    <pre class="usage"><span class='fu'>cbar</span>(<span class='no'>.data</span>, <span class='no'>ref_period</span>, <span class='no'>mea_period</span>, <span class='kw'>apply_standardized</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>cbar</span>(<span class='no'>.data</span>, <span class='no'>ref_period</span>, <span class='no'>mea_period</span>, <span class='kw'>apply_standardized</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,6 +125,10 @@ to abstract analysis output.</p>
     <tr>
       <th>apply_standardized</th>
       <td><p>whether it will standardized data or not</p></td>
+    </tr>
+    <tr>
+      <th>interval</th>
+      <td><p>credible interval. 0.95 by default.</p></td>
     </tr>
     <tr>
       <th>...</th>
