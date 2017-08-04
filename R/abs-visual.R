@@ -19,8 +19,9 @@ plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
   if (is.null(seq_by)) {
     n_row <- nrow(.cbar$pred)
     seq_by <- ifelse(n_row > 50,
-                     round(n_row/50), 1)
+                     round(n_row / 50), 1)
   }
+
   brks <- seq(1, n_row, seq_by)
   time_label <- time_label[brks]
   xintercept <- dplyr::filter(target_data, session == "measurement") %>%
@@ -38,8 +39,8 @@ plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
     xlab(x_label) + ylab(y_label) +
     scale_x_continuous(labels = time_label,
                        breaks = brks) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1,
-                                     vjust = 0.5, size = 8))
+    theme(axis.text.x = element_text(angle = 50, hjust = 1,
+                                     vjust = 1, size = 12))
 }
 
 # reserved

@@ -66,8 +66,8 @@ bsts_spec_static <- function(.data,
   stopifnot(inherits(model_options, "BstsOptions"))
 
   sd_prior <- Boom::SdPrior(sigma.guess = sigma_guess,
-                      upper.limit = upper_limit,
-                      sample.size = sd_prior_sample_size)
+                            upper.limit = upper_limit,
+                            sample.size = sd_prior_sample_size)
   ss <- bsts::AddLocalLevel(list(), y, sigma.prior = sd_prior)
 
   structure(list(formula = paste0(names(.data)[2], sep = " ~ ."),

@@ -2,7 +2,7 @@ Package: cbar
 Type: Package
 Title: Contextual Bayesian Anomaly Detection in R
 Version: 0.1.1
-Date: 2017-06-27
+Date: 2017-08-04
 Description: Detect contextual anomalies in time-series data with Bayesian data
   analysis. It focuses on determining a normal range of target value, and
   provides simple-to-use functions to abstract the outcome.

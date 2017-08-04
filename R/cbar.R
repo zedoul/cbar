@@ -72,6 +72,7 @@ destandard_pred <- function(.pred, .std_info) {
 #' @param ref_period performance reference period
 #' @param mea_period performance measurement period
 #' @param apply_standardized whether it will standardized data or not
+#' @param interval credible interval. 0.95 by default.
 #' @param ... params for \code{bsts_model}
 #' @export
 #' @examples
@@ -90,6 +91,7 @@ cbar <- function(.data,
                  ref_period,
                  mea_period,
                  apply_standardized = T,
+                 interval = .95,
                  ...) {
   # TODO: Consider the possibility that we may use check_data function for this
   stopifnot(colnames(.data)[1] == "datetime")
@@ -98,7 +100,10 @@ cbar <- function(.data,
                 inherits(.data[, 1], "POSIXlt"),
                 inherits(.data[, 1], "character")))
   stopifnot(all(sapply(2:ncol(.data),
-                       function(i) inherits(.data[, i], "numeric"))))
+                       function(i) {
+                         # Check type of data
+                         inherits(.data[, i], c("numeric", "integer"))
+                       })))
 
   # TODO: Support flexible session names, more than reference and measurement
 
@@ -114,7 +119,8 @@ cbar <- function(.data,
   .model <- bsts_model(target_data, ...)
 
   # Summarise intervals and point estimates
-  res <- inference(.model)
+  alpha <- 1 - interval
+  res <- inference(.model, alpha)
   if (apply_standardized) {
     res <- destandard_pred(res, ret[["std"]])
   }

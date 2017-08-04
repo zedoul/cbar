@@ -7,7 +7,8 @@
 \alias{cbar}
 \title{\code{cbar} package}
 \usage{
-cbar(.data, ref_period, mea_period, apply_standardized = T, ...)
+cbar(.data, ref_period, mea_period, apply_standardized = T, interval = 0.95,
+  ...)
 }
 \arguments{
 \item{.data}{data table with datetime, y, and predictors}
@@ -17,6 +18,8 @@ cbar(.data, ref_period, mea_period, apply_standardized = T, ...)
 \item{mea_period}{performance measurement period}
 
 \item{apply_standardized}{whether it will standardized data or not}
+
+\item{interval}{credible interval. 0.95 by default.}
 
 \item{...}{params for \code{bsts_model}}
 }
