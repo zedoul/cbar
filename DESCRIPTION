@@ -1,7 +1,7 @@
 Package: cbar
 Type: Package
 Title: Contextual Bayesian Anomaly Detection in R
-Version: 0.1.1
+Version: 0.1.2
 Date: 2017-08-04
 Description: Detect contextual anomalies in time-series data with Bayesian data
   analysis. It focuses on determining a normal range of target value, and
@@ -23,7 +23,6 @@ Imports:
 Suggests:
     datasets,
     knitr,
-    pkgdown,
     testthat
 License: Apache License 2.0 | file LICENSE
 VignetteBuilder: knitr
