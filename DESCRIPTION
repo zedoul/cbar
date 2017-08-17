@@ -7,7 +7,7 @@ Description: Detect contextual anomalies in time-series data with Bayesian data
   analysis. It focuses on determining a normal range of target value, and
   provides simple-to-use functions to abstract the outcome.
 Authors@R: c(
-    person("Kim", "Seonghyun", , "shyeon.kim@scipi.net", c("aut", "cre"))
+    person("Kim", "Seonghyun", "", "shyeon.kim@scipi.net", c("aut", "cre"))
     )
 URL: https://github.com/zedoul/cbar
 BugReports: https://github.com/zedoul/cbar/issues

@@ -82,8 +82,44 @@ or you can just use `print` function as follows:
 print(.cbar)
 ```
 
+or
+
+```{r}
+summarise_session(.cbar)
+```
+
 If you hope to see details of those anomalies:
 
 ```{r}
 summarise_anomaly(.cbar, .session = "measurement")
+```
+
+And if you rather want to check prediction performance:
+
+```{r}
+summarise_pred_error(.cbar)
+```
+
+to visualise:
+
+```{r}
+plot_error(.cbar, method = "mape")
+```
+
+### Structural analysis
+
+This Bayesian algorithm selects the best indicators, so we can make use of
+those selected indicators for structural analysis.
+Note that those indicators will be selected during the reference period.
+
+To see those indicators:
+
+```{r}
+summarise_incprob(.cbar)
+```
+
+to visualise:
+
+```{r}
+plot_incprob(.cbar)
 ```

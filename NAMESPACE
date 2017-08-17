@@ -3,6 +3,8 @@
 S3method(print,cbar)
 export(cbar)
 export(destandardized)
+export(plot_error)
+export(plot_incprob)
 export(plot_ts)
 export(standardized)
 export(summarise_anomaly)

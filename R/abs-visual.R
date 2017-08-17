@@ -43,18 +43,32 @@ plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
                                      vjust = 1, size = 12))
 }
 
-# reserved
-plot_error <- function(.cbar) {
-#  pivot = as.numeric(input$choosetr2) - as.numeric(input$choosetr1) + 1
-#  point.effect <- point.effect[pivot : length(point.effect)]
-#  boxplot(as.matrix(point.effect), xlab="resource", ylab="estimation error (%)") #, ylim=c(0,1.6))
+#' @export
+plot_error <- function(.cbar,
+                       xlab = "",
+                       ylab = "Estimation error",
+                       method = "diff",
+                       ...) {
+  .error <- summarise_pred_error(.cbar)
+
+  boxplot(.error[, method],
+          xlab = xlab, ylab = ylab, ...)
 }
 
-# reversed: Variable selection (each)
-plot_var <- function(.cbar,
-                     period = c("reference", "measurement")) {
+#' @export
+plot_incprob <- function(.cbar,
+                         threshold = .1,
+                         horiz = T,
+                         cex.names = .5,
+                         xlab = "Inclusion probability (%)",
+                         las = 1,
+                         ...) {
+  .incprob <- summarise_incprob(.cbar, threshold)
+  barplot(sort(.incprob) * 100,
+          horiz = horiz, cex.names = cex.names,
+          xlab = xlab, las = las, ...)
 }
 
 # reserved: Variable selection (compare)
-plot_var_comp <- function(.cbar) {
+plot_incprob_comp <- function(.cbar) {
 }

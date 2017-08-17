@@ -131,6 +131,7 @@ coef_estimate <- function(.cbar) {
 summarise_incprob <- function(.cbar, threshold = .1) {
   stopifnot(inherits(.cbar, "cbar"))
   coefs <- coef_estimate(.cbar)
+  coefs <- abs(coefs)
   coefs <- coefs / max(coefs)
   coefs[coefs > threshold]
 }
