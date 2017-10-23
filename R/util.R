@@ -1,4 +1,4 @@
-#' Standardized a vector
+#' Standardize a vector
 #'
 #' @param y numeric vector
 #' @export
@@ -11,7 +11,7 @@ standardized <- function(y) {
   (y - y_mu) / y_sd
 }
 
-#' Destandardized a vector
+#' Destandardize a vector
 #'
 #' @param y_hat standardized numeric vector
 #' @param y_mu a mean value of unstandarized vector

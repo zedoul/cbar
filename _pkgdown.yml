@@ -20,6 +20,11 @@ reference:
   - summarise_session
   - summarise_incprob
 
+- title: util
+  contents:
+  - standardized
+  - destandardized
+
 navbar:
   type: default
   left:

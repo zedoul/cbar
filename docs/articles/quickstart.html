@@ -131,22 +131,22 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>If you hope to see details of those anomalies:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_anomaly.html">summarise_anomaly</a></span>(.cbar, <span class="dt">.session =</span> <span class="st">"measurement"</span>)</code></pre></div>
 <pre><code>##               datetime     session    y point_pred lower_bound upper_bound
-## 1  2017-10-23 11:53:19 measurement 14.7   10.78358    6.143483    15.58287
-## 2  2017-10-23 11:54:19 measurement 32.4   24.75268   20.479201    28.81685
-## 3  2017-10-23 11:55:19 measurement 30.4   26.53384   21.106759    32.01673
-## 4  2017-10-23 11:56:19 measurement 33.9   25.70178   21.063648    30.37052
-## 5  2017-10-23 11:57:19 measurement 21.5   23.12496   18.901012    28.09847
-## 6  2017-10-23 11:58:19 measurement 15.5   17.62925   13.450514    21.91753
-## 7  2017-10-23 11:59:19 measurement 15.2   17.97975   13.956142    21.73321
-## 8  2017-10-23 12:00:19 measurement 13.3   14.24066    8.428793    19.33453
-## 9  2017-10-23 12:01:19 measurement 19.2   15.98603   11.659268    20.12914
-## 10 2017-10-23 12:02:19 measurement 27.3   25.34065   20.467165    30.08667
-## 11 2017-10-23 12:03:19 measurement 26.0   23.97144   19.157906    28.94530
-## 12 2017-10-23 12:04:19 measurement 30.4   24.81019   18.158970    30.63887
-## 13 2017-10-23 12:05:19 measurement 15.8   15.36513    7.550942    22.83930
-## 14 2017-10-23 12:06:19 measurement 19.7   19.38087   12.960239    24.81101
-## 15 2017-10-23 12:07:19 measurement 15.0   12.25816    2.129695    20.73411
-## 16 2017-10-23 12:08:19 measurement 21.4   22.00552   17.992760    26.61673
+## 1  2017-10-23 11:57:57 measurement 14.7   10.97548    6.356411    15.94858
+## 2  2017-10-23 11:58:57 measurement 32.4   24.74991   20.530531    29.38626
+## 3  2017-10-23 11:59:57 measurement 30.4   26.93936   21.655158    41.17835
+## 4  2017-10-23 12:00:57 measurement 33.9   25.72468   20.751510    31.14016
+## 5  2017-10-23 12:01:57 measurement 21.5   23.44197   18.656186    32.05812
+## 6  2017-10-23 12:02:57 measurement 15.5   17.45856   12.920333    21.59189
+## 7  2017-10-23 12:03:57 measurement 15.2   18.00819   13.696949    21.97175
+## 8  2017-10-23 12:04:57 measurement 13.3   14.47217    8.862853    20.57441
+## 9  2017-10-23 12:05:57 measurement 19.2   15.98521   11.589646    20.35926
+## 10 2017-10-23 12:06:57 measurement 27.3   25.29943   20.702220    29.99012
+## 11 2017-10-23 12:07:57 measurement 26.0   23.52828   16.786014    28.42930
+## 12 2017-10-23 12:08:57 measurement 30.4   23.89301    6.379521    30.85628
+## 13 2017-10-23 12:09:57 measurement 15.8   14.62143   -1.215653    23.10525
+## 14 2017-10-23 12:10:57 measurement 19.7   18.42955   -1.708063    24.94202
+## 15 2017-10-23 12:11:57 measurement 15.0   11.07934  -15.643002    20.32123
+## 16 2017-10-23 12:12:57 measurement 21.4   22.00993   17.671946    26.48306
 ##    anomaly
 ## 1    FALSE
 ## 2     TRUE
@@ -167,22 +167,22 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>And if you rather want to check prediction performance:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_pred_error.html">summarise_pred_error</a></span>(.cbar)</code></pre></div>
 <pre><code>##               datetime     session      diff       mape
-## 1  2017-10-23 11:53:19 measurement 3.9164185 0.26642302
-## 2  2017-10-23 11:54:19 measurement 7.6473215 0.23602844
-## 3  2017-10-23 11:55:19 measurement 3.8661593 0.12717629
-## 4  2017-10-23 11:56:19 measurement 8.1982203 0.24183541
-## 5  2017-10-23 11:57:19 measurement 1.6249569 0.07557939
-## 6  2017-10-23 11:58:19 measurement 2.1292457 0.13737069
-## 7  2017-10-23 11:59:19 measurement 2.7797510 0.18287835
-## 8  2017-10-23 12:00:19 measurement 0.9406580 0.07072617
-## 9  2017-10-23 12:01:19 measurement 3.2139670 0.16739411
-## 10 2017-10-23 12:02:19 measurement 1.9593490 0.07177103
-## 11 2017-10-23 12:03:19 measurement 2.0285607 0.07802157
-## 12 2017-10-23 12:04:19 measurement 5.5898147 0.18387548
-## 13 2017-10-23 12:05:19 measurement 0.4348719 0.02752354
-## 14 2017-10-23 12:06:19 measurement 0.3191254 0.01619926
-## 15 2017-10-23 12:07:19 measurement 2.7418431 0.18278954
-## 16 2017-10-23 12:08:19 measurement 0.6055165 0.02829516</code></pre>
+## 1  2017-10-23 11:57:57 measurement 3.7245168 0.25336849
+## 2  2017-10-23 11:58:57 measurement 7.6500870 0.23611380
+## 3  2017-10-23 11:59:57 measurement 3.4606439 0.11383697
+## 4  2017-10-23 12:00:57 measurement 8.1753166 0.24115978
+## 5  2017-10-23 12:01:57 measurement 1.9419658 0.09032399
+## 6  2017-10-23 12:02:57 measurement 1.9585596 0.12635868
+## 7  2017-10-23 12:03:57 measurement 2.8081939 0.18474960
+## 8  2017-10-23 12:04:57 measurement 1.1721702 0.08813310
+## 9  2017-10-23 12:05:57 measurement 3.2147939 0.16743718
+## 10 2017-10-23 12:06:57 measurement 2.0005738 0.07328109
+## 11 2017-10-23 12:07:57 measurement 2.4717151 0.09506597
+## 12 2017-10-23 12:08:57 measurement 6.5069945 0.21404587
+## 13 2017-10-23 12:09:57 measurement 1.1785677 0.07459289
+## 14 2017-10-23 12:10:57 measurement 1.2704532 0.06449001
+## 15 2017-10-23 12:11:57 measurement 3.9206634 0.26137756
+## 16 2017-10-23 12:12:57 measurement 0.6099254 0.02850119</code></pre>
 <p>to visualise:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_error.html">plot_error</a></span>(.cbar, <span class="dt">method =</span> <span class="st">"mape"</span>)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
@@ -194,7 +194,7 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>To see those indicators:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_incprob.html">summarise_incprob</a></span>(.cbar)</code></pre></div>
 <pre><code>##        hp        wt 
-## 0.6641003 1.0000000</code></pre>
+## 0.7523384 1.0000000</code></pre>
 <p>to visualise:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_incprob.html">plot_incprob</a></span>(.cbar)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>

@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{destandardized}
 \alias{destandardized}
-\title{Destandardized a vector}
+\title{Destandardize a vector}
 \usage{
 destandardized(y_hat, y_mu, y_sd)
 }
@@ -14,5 +14,5 @@ destandardized(y_hat, y_mu, y_sd)
 \item{y_sd}{a standard deviation of unstandarized vector}
 }
 \description{
-Destandardized a vector
+Destandardize a vector
 }

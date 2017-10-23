@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{standardized}
 \alias{standardized}
-\title{Standardized a vector}
+\title{Standardize a vector}
 \usage{
 standardized(y)
 }
@@ -10,5 +10,5 @@ standardized(y)
 \item{y}{numeric vector}
 }
 \description{
-Standardized a vector
+Standardize a vector
 }
