@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Destandardized a vector — destandardized • cbar</title>
+<title>Print time-series plot — plot_ts_ • cbar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,31 +92,39 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Destandardized a vector</h1>
+    <h1>Print time-series plot</h1>
     </div>
 
     
-    <p>Destandardized a vector</p>
+    <p>Print time-series plot</p>
     
 
-    <pre class="usage"><span class='fu'>destandardized</span>(<span class='no'>y_hat</span>, <span class='no'>y_mu</span>, <span class='no'>y_sd</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_ts_</span>(<span class='no'>target_data</span>, <span class='kw'>x_label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>y_label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>seq_by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>y_hat</th>
-      <td><p>standardized numeric vector</p></td>
+      <th>target_data</th>
+      <td><p>data frame</p></td>
     </tr>
     <tr>
-      <th>y_mu</th>
-      <td><p>a mean value of unstandarized vector</p></td>
+      <th>x_label</th>
+      <td><p>a label for x-axis</p></td>
     </tr>
     <tr>
-      <th>y_sd</th>
-      <td><p>a standard deviation of unstandarized vector</p></td>
+      <th>y_label</th>
+      <td><p>a label for y-ayis</p></td>
+    </tr>
+    <tr>
+      <th>seq_by</th>
+      <td><p>increment of the sequence, which is NULL by default</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>ggplot</code> object</p>
     
 
   </div>
@@ -124,7 +132,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

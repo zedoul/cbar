@@ -1,6 +1,6 @@
 #' Print time-series plot
 #'
-#' @param .cbar cbar object
+#' @param target_data data frame
 #' @param x_label a label for x-axis
 #' @param y_label a label for y-ayis
 #' @param seq_by increment of the sequence, which is NULL by default
@@ -9,9 +9,7 @@
 #' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_vline xlab ylab
 #'             scale_x_continuous theme element_text
 #' @export
-plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
-  stopifnot(inherits(.cbar, "cbar"))
-  target_data <- .cbar$pred
+plot_ts_ <- function(target_data, x_label = "", y_label = "", seq_by = NULL) {
   time_label <- as.character(target_data[, "datetime"])
   target_data[, "datetime"] <- 1:nrow(target_data)
 
@@ -43,6 +41,38 @@ plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
                                      vjust = 1, size = 12))
 }
 
+#' Print time-series plot
+#'
+#' @param .cbar cbar object
+#' @param x_label a label for x-axis
+#' @param y_label a label for y-ayis
+#' @param seq_by increment of the sequence, which is NULL by default
+#' @return \code{ggplot} object
+#' @export
+plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
+  stopifnot(inherits(.cbar, "cbar"))
+  target_data <- .cbar$pred
+  plot_ts_(target_data, ...)
+}
+
+#' @export
+plot_error_ <- function(.error,
+                       xlab = "",
+                       ylab = "Estimation error",
+                       method = "diff",
+                       ...) {
+  boxplot(.error[, method],
+          xlab = xlab, ylab = ylab, ...)
+}
+
+
+#' Print estimation error plot
+#'
+#' @param .cbar cbar object
+#' @param x_label a label for x-axis
+#' @param y_label a label for y-ayis
+#' @param method diff
+#' @return \code{boxplot} object
 #' @export
 plot_error <- function(.cbar,
                        xlab = "",
@@ -51,10 +81,28 @@ plot_error <- function(.cbar,
                        ...) {
   .error <- summarise_pred_error(.cbar)
 
-  boxplot(.error[, method],
-          xlab = xlab, ylab = ylab, ...)
+  plot_error_(.error[, method], ...)
 }
 
+#' @export
+plot_incprob_ <- function(.incprob,
+                         threshold = .1,
+                         horiz = T,
+                         cex.names = .5,
+                         xlab = "Inclusion probability (%)",
+                         las = 1,
+                         ...) {
+  barplot(sort(.incprob) * 100,
+          horiz = horiz, cex.names = cex.names,
+          xlab = xlab, las = las, ...)
+}
+
+
+#' Print inclusion probablity plot
+#'
+#' @param .cbar cbar object
+#' @param threshold a threhold for inclusion probablity
+#' @return \code{boxplot} object
 #' @export
 plot_incprob <- function(.cbar,
                          threshold = .1,
@@ -64,9 +112,7 @@ plot_incprob <- function(.cbar,
                          las = 1,
                          ...) {
   .incprob <- summarise_incprob(.cbar, threshold)
-  barplot(sort(.incprob) * 100,
-          horiz = horiz, cex.names = cex.names,
-          xlab = xlab, las = las, ...)
+  plot_incprob_(.incprob, ...)
 }
 
 # reserved: Variable selection (compare)

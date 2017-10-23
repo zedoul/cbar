@@ -1,0 +1,38 @@
+home:
+  strip_header: true
+
+reference:
+- title: cbar
+  contents:
+  - cbar
+  - print.cbar
+
+- title: plot
+  contents:
+  - plot_ts
+  - plot_error
+  - plot_incprob
+
+- title: summarise
+  contents:
+  - summarise_pred_error
+  - summarise_anomaly
+  - summarise_session
+  - summarise_incprob
+
+navbar:
+  type: default
+  left:
+  - text: Intro
+    href: articles/quickstart.html
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    menu:
+    - text: Contextual anomaly
+      href: articles/contextual-anomaly.html
+  - text: News
+    href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/tidyverse/dplyr

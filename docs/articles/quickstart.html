@@ -29,10 +29,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
+  <a href="../articles/quickstart.html">Intro</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -45,17 +42,17 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/contextual_anomaly.html">Contextual anomaly</a>
-    </li>
-    <li>
-      <a href="../articles/quickstart.html">Quickstart</a>
+      <a href="../articles/contextual-anomaly.html">Contextual anomaly</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/zedoul/cbar">
+  <a href="https://github.com/tidyverse/dplyr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -75,12 +72,13 @@
       <h1>Quickstart</h1>
                         <h4 class="author">Kim Seonghyun</h4>
             
-            <h4 class="date">2017-08-17</h4>
+            <h4 class="date">2017-10-23</h4>
           </div>
 
     
     
 <div class="contents">
+<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
@@ -133,22 +131,22 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>If you hope to see details of those anomalies:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_anomaly.html">summarise_anomaly</a></span>(.cbar, <span class="dt">.session =</span> <span class="st">"measurement"</span>)</code></pre></div>
 <pre><code>##               datetime     session    y point_pred lower_bound upper_bound
-## 1  2017-08-17 16:48:06 measurement 14.7   10.74868    6.128847    15.74848
-## 2  2017-08-17 16:49:06 measurement 32.4   24.66833   20.465714    29.03122
-## 3  2017-08-17 16:50:06 measurement 30.4   26.47093   21.038288    31.43423
-## 4  2017-08-17 16:51:06 measurement 33.9   25.62138   20.851388    30.48227
-## 5  2017-08-17 16:52:06 measurement 21.5   23.06195   18.378425    27.53038
-## 6  2017-08-17 16:53:06 measurement 15.5   17.62880   13.288985    21.71621
-## 7  2017-08-17 16:54:06 measurement 15.2   17.94542   13.772863    21.92564
-## 8  2017-08-17 16:55:06 measurement 13.3   14.19357    8.847418    19.62779
-## 9  2017-08-17 16:56:06 measurement 19.2   15.99435   11.906615    20.14801
-## 10 2017-08-17 16:57:06 measurement 27.3   25.27925   21.008215    29.71095
-## 11 2017-08-17 16:58:06 measurement 26.0   23.91239   19.247114    28.76018
-## 12 2017-08-17 16:59:06 measurement 30.4   24.79544   17.912206    30.99172
-## 13 2017-08-17 17:00:06 measurement 15.8   15.30487    7.277840    23.11878
-## 14 2017-08-17 17:01:06 measurement 19.7   19.37768   13.087123    24.64981
-## 15 2017-08-17 17:02:06 measurement 15.0   12.24582    2.243598    20.49250
-## 16 2017-08-17 17:03:06 measurement 21.4   21.92887   17.727907    25.85008
+## 1  2017-10-23 11:53:19 measurement 14.7   10.78358    6.143483    15.58287
+## 2  2017-10-23 11:54:19 measurement 32.4   24.75268   20.479201    28.81685
+## 3  2017-10-23 11:55:19 measurement 30.4   26.53384   21.106759    32.01673
+## 4  2017-10-23 11:56:19 measurement 33.9   25.70178   21.063648    30.37052
+## 5  2017-10-23 11:57:19 measurement 21.5   23.12496   18.901012    28.09847
+## 6  2017-10-23 11:58:19 measurement 15.5   17.62925   13.450514    21.91753
+## 7  2017-10-23 11:59:19 measurement 15.2   17.97975   13.956142    21.73321
+## 8  2017-10-23 12:00:19 measurement 13.3   14.24066    8.428793    19.33453
+## 9  2017-10-23 12:01:19 measurement 19.2   15.98603   11.659268    20.12914
+## 10 2017-10-23 12:02:19 measurement 27.3   25.34065   20.467165    30.08667
+## 11 2017-10-23 12:03:19 measurement 26.0   23.97144   19.157906    28.94530
+## 12 2017-10-23 12:04:19 measurement 30.4   24.81019   18.158970    30.63887
+## 13 2017-10-23 12:05:19 measurement 15.8   15.36513    7.550942    22.83930
+## 14 2017-10-23 12:06:19 measurement 19.7   19.38087   12.960239    24.81101
+## 15 2017-10-23 12:07:19 measurement 15.0   12.25816    2.129695    20.73411
+## 16 2017-10-23 12:08:19 measurement 21.4   22.00552   17.992760    26.61673
 ##    anomaly
 ## 1    FALSE
 ## 2     TRUE
@@ -169,24 +167,24 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>And if you rather want to check prediction performance:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_pred_error.html">summarise_pred_error</a></span>(.cbar)</code></pre></div>
 <pre><code>##               datetime     session      diff       mape
-## 1  2017-08-17 16:48:06 measurement 3.9513189 0.26879720
-## 2  2017-08-17 16:49:06 measurement 7.7316736 0.23863190
-## 3  2017-08-17 16:50:06 measurement 3.9290725 0.12924581
-## 4  2017-08-17 16:51:06 measurement 8.2786182 0.24420703
-## 5  2017-08-17 16:52:06 measurement 1.5619499 0.07264883
-## 6  2017-08-17 16:53:06 measurement 2.1288034 0.13734216
-## 7  2017-08-17 16:54:06 measurement 2.7454238 0.18061998
-## 8  2017-08-17 16:55:06 measurement 0.8935742 0.06718603
-## 9  2017-08-17 16:56:06 measurement 3.2056491 0.16696089
-## 10 2017-08-17 16:57:06 measurement 2.0207491 0.07402011
-## 11 2017-08-17 16:58:06 measurement 2.0876127 0.08029280
-## 12 2017-08-17 16:59:06 measurement 5.6045565 0.18436041
-## 13 2017-08-17 17:00:06 measurement 0.4951272 0.03133717
-## 14 2017-08-17 17:01:06 measurement 0.3223226 0.01636155
-## 15 2017-08-17 17:02:06 measurement 2.7541808 0.18361205
-## 16 2017-08-17 17:03:06 measurement 0.5288722 0.02471365</code></pre>
+## 1  2017-10-23 11:53:19 measurement 3.9164185 0.26642302
+## 2  2017-10-23 11:54:19 measurement 7.6473215 0.23602844
+## 3  2017-10-23 11:55:19 measurement 3.8661593 0.12717629
+## 4  2017-10-23 11:56:19 measurement 8.1982203 0.24183541
+## 5  2017-10-23 11:57:19 measurement 1.6249569 0.07557939
+## 6  2017-10-23 11:58:19 measurement 2.1292457 0.13737069
+## 7  2017-10-23 11:59:19 measurement 2.7797510 0.18287835
+## 8  2017-10-23 12:00:19 measurement 0.9406580 0.07072617
+## 9  2017-10-23 12:01:19 measurement 3.2139670 0.16739411
+## 10 2017-10-23 12:02:19 measurement 1.9593490 0.07177103
+## 11 2017-10-23 12:03:19 measurement 2.0285607 0.07802157
+## 12 2017-10-23 12:04:19 measurement 5.5898147 0.18387548
+## 13 2017-10-23 12:05:19 measurement 0.4348719 0.02752354
+## 14 2017-10-23 12:06:19 measurement 0.3191254 0.01619926
+## 15 2017-10-23 12:07:19 measurement 2.7418431 0.18278954
+## 16 2017-10-23 12:08:19 measurement 0.6055165 0.02829516</code></pre>
 <p>to visualise:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_error</span>(.cbar, <span class="dt">method =</span> <span class="st">"mape"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_error.html">plot_error</a></span>(.cbar, <span class="dt">method =</span> <span class="st">"mape"</span>)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
 </div>
 <div id="structural-analysis" class="section level3">
@@ -195,10 +193,10 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>This Bayesian algorithm selects the best indicators, so we can make use of those selected indicators for structural analysis. Note that those indicators will be selected during the reference period.</p>
 <p>To see those indicators:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_incprob.html">summarise_incprob</a></span>(.cbar)</code></pre></div>
-<pre><code>##       hp       wt 
-## 0.756321 1.000000</code></pre>
+<pre><code>##        hp        wt 
+## 0.6641003 1.0000000</code></pre>
 <p>to visualise:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_incprob</span>(.cbar)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_incprob.html">plot_incprob</a></span>(.cbar)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
 </div>
 </div>
