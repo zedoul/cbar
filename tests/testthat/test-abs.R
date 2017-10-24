@@ -20,8 +20,6 @@ test_that("analytical abstraction", {
   expect_true(inherits(res, "data.frame"))
   res <- summarise_session(.cbar)
   expect_true(inherits(res, "data.frame"))
-  res <- coef_samples(.cbar)
-  expect_true(inherits(res, "list"))
   res <- summarise_incprob(.cbar)
   expect_true(inherits(res, "numeric"))
 })

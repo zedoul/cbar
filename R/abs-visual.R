@@ -15,7 +15,7 @@ plot_ts_ <- function(target_data, x_label = "", y_label = "", seq_by = NULL) {
 
   # TODO: Use S3 class function
   if (is.null(seq_by)) {
-    n_row <- nrow(.cbar$pred)
+    n_row <- nrow(target_data)
     seq_by <- ifelse(n_row > 50,
                      round(n_row / 50), 1)
   }
@@ -52,9 +52,17 @@ plot_ts_ <- function(target_data, x_label = "", y_label = "", seq_by = NULL) {
 plot_ts <- function(.cbar, x_label = "", y_label = "", seq_by = NULL) {
   stopifnot(inherits(.cbar, "cbar"))
   target_data <- .cbar$pred
-  plot_ts_(target_data, ...)
+  plot_ts_(target_data, x_label, y_label, seq_by)
 }
 
+#' Print estimation error plot
+#'
+#' @param .error error data frame
+#' @param xlab a label for x-axis
+#' @param ylab a label for y-ayis
+#' @param method diff
+#' @param ... params for boxplot
+#' @importFrom graphics boxplot
 #' @export
 plot_error_ <- function(.error,
                        xlab = "",
@@ -69,9 +77,10 @@ plot_error_ <- function(.error,
 #' Print estimation error plot
 #'
 #' @param .cbar cbar object
-#' @param x_label a label for x-axis
-#' @param y_label a label for y-ayis
+#' @param xlab a label for x-axis
+#' @param ylab a label for y-ayis
 #' @param method diff
+#' @param ... params for boxplot
 #' @return \code{boxplot} object
 #' @export
 plot_error <- function(.cbar,
@@ -81,9 +90,20 @@ plot_error <- function(.cbar,
                        ...) {
   .error <- summarise_pred_error(.cbar)
 
-  plot_error_(.error[, method], ...)
+  plot_error_(.error[, method], xlab, ylab, method, ...)
 }
 
+#' Print inclusion probablity plot
+#'
+#' @param .incprob data frame
+#' @param threshold a threhold for inclusion probablity
+#' @param horiz horiz
+#' @param cex.names cex.names
+#' @param xlab xlab
+#' @param las las
+#' @param ... params for barplot
+#' @return \code{boxplot} object
+#' @importFrom graphics barplot
 #' @export
 plot_incprob_ <- function(.incprob,
                          threshold = .1,
@@ -102,6 +122,11 @@ plot_incprob_ <- function(.incprob,
 #'
 #' @param .cbar cbar object
 #' @param threshold a threhold for inclusion probablity
+#' @param horiz horiz
+#' @param cex.names cex.names
+#' @param xlab xlab
+#' @param las las
+#' @param ... params for barplot
 #' @return \code{boxplot} object
 #' @export
 plot_incprob <- function(.cbar,
@@ -112,7 +137,7 @@ plot_incprob <- function(.cbar,
                          las = 1,
                          ...) {
   .incprob <- summarise_incprob(.cbar, threshold)
-  plot_incprob_(.incprob, ...)
+  plot_incprob_(.incprob, threshold, horiz, cex.names, xlab, las, ...)
 }
 
 # reserved: Variable selection (compare)
