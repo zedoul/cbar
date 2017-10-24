@@ -9,7 +9,7 @@ Description: Detect contextual anomalies in time-series data with Bayesian data
 Authors@R: c(
     person("Kim", "Seonghyun", "", "shyeon.kim@scipi.net", c("aut", "cre"))
     )
-URL: https://github.com/zedoul/cbar
+URL: https://zedoul.github.io/cbar
 BugReports: https://github.com/zedoul/cbar/issues
 Depends:
     R (>= 3.3.0)
