@@ -69,7 +69,7 @@ plot_error_ <- function(.error,
                        ylab = "Estimation error",
                        method = "diff",
                        ...) {
-  boxplot(.error[, method],
+  boxplot(.error,
           xlab = xlab, ylab = ylab, ...)
 }
 

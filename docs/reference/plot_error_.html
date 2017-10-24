@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print inclusion probablity plot — plot_incprob • cbar</title>
+<title>Print estimation error plot — plot_error_ • cbar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,52 +92,40 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print inclusion probablity plot</h1>
+    <h1>Print estimation error plot</h1>
     </div>
 
     
-    <p>Print inclusion probablity plot</p>
+    <p>Print estimation error plot</p>
     
 
-    <pre class="usage"><span class='fu'>plot_incprob</span>(<span class='no'>.cbar</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>horiz</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>cex.names</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Inclusion probability (%)"</span>, <span class='kw'>las</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_error_</span>(<span class='no'>.error</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Estimation error"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"diff"</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.cbar</th>
-      <td><p>cbar object</p></td>
-    </tr>
-    <tr>
-      <th>threshold</th>
-      <td><p>a threhold for inclusion probablity</p></td>
-    </tr>
-    <tr>
-      <th>horiz</th>
-      <td><p>horiz</p></td>
-    </tr>
-    <tr>
-      <th>cex.names</th>
-      <td><p>cex.names</p></td>
+      <th>.error</th>
+      <td><p>error data frame</p></td>
     </tr>
     <tr>
       <th>xlab</th>
-      <td><p>xlab</p></td>
+      <td><p>a label for x-axis</p></td>
     </tr>
     <tr>
-      <th>las</th>
-      <td><p>las</p></td>
+      <th>ylab</th>
+      <td><p>a label for y-ayis</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>diff</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>params for barplot</p></td>
+      <td><p>params for boxplot</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>boxplot</code> object</p>
     
 
   </div>
@@ -145,9 +133,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
