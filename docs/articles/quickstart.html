@@ -72,13 +72,12 @@
       <h1>Quickstart</h1>
                         <h4 class="author">Kim Seonghyun</h4>
             
-            <h4 class="date">2017-10-24</h4>
+            <h4 class="date">2017-12-21</h4>
           </div>
 
     
     
 <div class="contents">
-<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
@@ -131,22 +130,22 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>If you hope to see details of those anomalies:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_anomaly.html">summarise_anomaly</a></span>(.cbar, <span class="dt">.session =</span> <span class="st">"measurement"</span>)</code></pre></div>
 <pre><code>##               datetime     session    y point_pred lower_bound upper_bound
-## 1  2017-10-24 15:36:05 measurement 14.7   10.73854    6.038530    15.48577
-## 2  2017-10-24 15:37:05 measurement 32.4   24.78351   20.909834    29.09613
-## 3  2017-10-24 15:38:05 measurement 30.4   26.65729   21.523477    32.15219
-## 4  2017-10-24 15:39:05 measurement 33.9   25.78222   21.015800    30.66371
-## 5  2017-10-24 15:40:05 measurement 21.5   23.18060   19.034322    27.79085
-## 6  2017-10-24 15:41:05 measurement 15.5   17.63011   13.531929    21.60156
-## 7  2017-10-24 15:42:05 measurement 15.2   18.00846   14.001904    21.90181
-## 8  2017-10-24 15:43:05 measurement 13.3   14.37214    8.894254    19.60739
-## 9  2017-10-24 15:44:05 measurement 19.2   16.05851   11.777362    20.09438
-## 10 2017-10-24 15:45:05 measurement 27.3   25.40571   20.875118    29.54783
-## 11 2017-10-24 15:46:05 measurement 26.0   24.04003   19.378786    29.14389
-## 12 2017-10-24 15:47:05 measurement 30.4   24.93038   18.421915    30.68980
-## 13 2017-10-24 15:48:05 measurement 15.8   15.60427    8.023787    23.12472
-## 14 2017-10-24 15:49:05 measurement 19.7   19.36796   12.986639    24.68691
-## 15 2017-10-24 15:50:05 measurement 15.0   12.40539    1.893594    21.03035
-## 16 2017-10-24 15:51:05 measurement 21.4   22.02740   17.812783    26.41346
+## 1  2017-12-21 15:50:09 measurement 14.7   10.80981    6.453536    15.67128
+## 2  2017-12-21 15:51:09 measurement 32.4   24.94162   20.481840    29.27472
+## 3  2017-12-21 15:52:09 measurement 30.4   27.09495   21.555414    34.54683
+## 4  2017-12-21 15:53:09 measurement 33.9   25.98294   21.388805    30.63084
+## 5  2017-12-21 15:54:09 measurement 21.5   23.51963   18.790273    29.36701
+## 6  2017-12-21 15:55:09 measurement 15.5   17.47841   12.906749    21.52153
+## 7  2017-12-21 15:56:09 measurement 15.2   18.03678   13.881706    22.26309
+## 8  2017-12-21 15:57:09 measurement 13.3   14.58216    9.049250    20.34114
+## 9  2017-12-21 15:58:09 measurement 19.2   16.05066   11.934944    20.22790
+## 10 2017-12-21 15:59:09 measurement 27.3   25.53608   21.319480    30.16509
+## 11 2017-12-21 16:00:09 measurement 26.0   23.92192   18.553984    29.18577
+## 12 2017-12-21 16:01:09 measurement 30.4   24.48550   16.285601    30.51922
+## 13 2017-12-21 16:02:09 measurement 15.8   15.29917    4.195908    22.70719
+## 14 2017-12-21 16:03:09 measurement 19.7   18.70781    7.364142    24.43209
+## 15 2017-12-21 16:04:09 measurement 15.0   11.63437   -1.049732    20.79486
+## 16 2017-12-21 16:05:09 measurement 21.4   22.17463   18.028705    26.74785
 ##    anomaly
 ## 1    FALSE
 ## 2     TRUE
@@ -167,22 +166,22 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>And if you rather want to check prediction performance:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_pred_error.html">summarise_pred_error</a></span>(.cbar)</code></pre></div>
 <pre><code>##               datetime     session      diff       mape
-## 1  2017-10-24 15:36:05 measurement 3.9614574 0.26948690
-## 2  2017-10-24 15:37:05 measurement 7.6164948 0.23507700
-## 3  2017-10-24 15:38:05 measurement 3.7427063 0.12311534
-## 4  2017-10-24 15:39:05 measurement 8.1177782 0.23946248
-## 5  2017-10-24 15:40:05 measurement 1.6806032 0.07816759
-## 6  2017-10-24 15:41:05 measurement 2.1301150 0.13742677
-## 7  2017-10-24 15:42:05 measurement 2.8084577 0.18476695
-## 8  2017-10-24 15:43:05 measurement 1.0721399 0.08061202
-## 9  2017-10-24 15:44:05 measurement 3.1414881 0.16361917
-## 10 2017-10-24 15:45:05 measurement 1.8942944 0.06938807
-## 11 2017-10-24 15:46:05 measurement 1.9599693 0.07538343
-## 12 2017-10-24 15:47:05 measurement 5.4696192 0.17992168
-## 13 2017-10-24 15:48:05 measurement 0.1957334 0.01238819
-## 14 2017-10-24 15:49:05 measurement 0.3320350 0.01685457
-## 15 2017-10-24 15:50:05 measurement 2.5946141 0.17297427
-## 16 2017-10-24 15:51:05 measurement 0.6274047 0.02931798</code></pre>
+## 1  2017-12-21 15:50:09 measurement 3.8901875 0.26463861
+## 2  2017-12-21 15:51:09 measurement 7.4583765 0.23019680
+## 3  2017-12-21 15:52:09 measurement 3.3050472 0.10871866
+## 4  2017-12-21 15:53:09 measurement 7.9170636 0.23354170
+## 5  2017-12-21 15:54:09 measurement 2.0196337 0.09393645
+## 6  2017-12-21 15:55:09 measurement 1.9784081 0.12763923
+## 7  2017-12-21 15:56:09 measurement 2.8367803 0.18663028
+## 8  2017-12-21 15:57:09 measurement 1.2821648 0.09640337
+## 9  2017-12-21 15:58:09 measurement 3.1493389 0.16402807
+## 10 2017-12-21 15:59:09 measurement 1.7639188 0.06461241
+## 11 2017-12-21 16:00:09 measurement 2.0780782 0.07992608
+## 12 2017-12-21 16:01:09 measurement 5.9145010 0.19455595
+## 13 2017-12-21 16:02:09 measurement 0.5008259 0.03169784
+## 14 2017-12-21 16:03:09 measurement 0.9921852 0.05036473
+## 15 2017-12-21 16:04:09 measurement 3.3656267 0.22437511
+## 16 2017-12-21 16:05:09 measurement 0.7746257 0.03619746</code></pre>
 <p>to visualise:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_error.html">plot_error</a></span>(.cbar, <span class="dt">method =</span> <span class="st">"mape"</span>)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
@@ -193,8 +192,8 @@ mea_session &lt;-<span class="st"> </span><span class="dv">17</span>:<span class
 <p>This Bayesian algorithm selects the best indicators, so we can make use of those selected indicators for structural analysis. Note that those indicators will be selected during the reference period.</p>
 <p>To see those indicators:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summarise_incprob.html">summarise_incprob</a></span>(.cbar)</code></pre></div>
-<pre><code>##        hp        wt 
-## 0.6446197 1.0000000</code></pre>
+<pre><code>##       hp       wt 
+## 0.449398 1.000000</code></pre>
 <p>to visualise:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plot_incprob.html">plot_incprob</a></span>(.cbar)</code></pre></div>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
