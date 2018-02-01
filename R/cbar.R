@@ -99,6 +99,10 @@ cbar <- function(.data,
                 inherits(.data[, 1], "POSIXct"),
                 inherits(.data[, 1], "POSIXlt"),
                 inherits(.data[, 1], "character")))
+  stopifnot(min(ref_period) > 0)
+  stopifnot(min(mea_period) > 0)
+  stopifnot(nrow(.data) >= max(ref_period))
+  stopifnot(nrow(.data) >= max(mea_period))
   stopifnot(all(sapply(2:ncol(.data),
                        function(i) {
                          # Check type of data

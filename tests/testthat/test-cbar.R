@@ -12,4 +12,9 @@ test_that("cbar", {
 
   res <- cbar(.data, pre_period, post_period, apply_standardized = F)
   expect_true(inherits(res, "cbar"))
+
+  expect_error(cbar(.data, -3:-1, -100:-20))
+  expect_error(cbar(.data, 1:100000, 1:10000))
 })
+
+
