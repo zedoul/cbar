@@ -42,7 +42,7 @@ library(cbar)
 
 ### Introduction
 
-`cbar` is an R package for detecting anomaly in time-series data with Bayesian inference.
+`cbar` (Contextual Bayesian Anomaly Detection in R) is an R package for detecting anomaly in time-series data with Bayesian inference.
 Although there are many packages to detect anomaly in the world, relatively few packages
 provide functions for visually and/or analytically abstracting the output.
 
