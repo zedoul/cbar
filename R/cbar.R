@@ -29,7 +29,10 @@ prepare_data <- function(.data,
                      sd = sd(.data[, 2], na.rm = T))
 
     for (i in 2:ncol(.data)) {
-      .data[, i] <- standardized(.data[, i])
+      tryCatch({
+        .data[, i] <- standardized(.data[, i])
+      }, error = function(x){
+      })
     }
   }
 
@@ -52,7 +55,10 @@ destandard_pred <- function(.pred, .std_info) {
     .sd <- .std_info$sd
 
     for (i in 1:ncol(.pred)) {
-      .pred[, i] <- destandardized(.pred[, i], .mean, .sd)
+      tryCatch({
+        .pred[, i] <- destandardized(.pred[, i], .mean, .sd)
+      }, error = function(x){
+      })
     }
   }
 
