@@ -2,13 +2,14 @@ Package: cbar
 Type: Package
 Title: Contextual Bayesian Anomaly Detection in R
 Version: 0.1.3
-Date: 2017-11-23
+Author: Kim Seonghyun [aut, cre]
+Maintainer: Kim Seonghyun <zedoul@gmail.com>
+Authors@R: c(
+    person("Kim", "Seonghyun", "", "zedoul@gmail.com", c("aut", "cre"))
+    )
 Description: Detect contextual anomalies in time-series data with Bayesian data
   analysis. It focuses on determining a normal range of target value, and
   provides simple-to-use functions to abstract the outcome.
-Authors@R: c(
-    person("Kim", "Seonghyun", "", "shyeon.kim@scipi.net", c("aut", "cre"))
-    )
 URL: https://zedoul.github.io/cbar
 BugReports: https://github.com/zedoul/cbar/issues
 Depends:
@@ -24,7 +25,8 @@ Suggests:
     datasets,
     knitr,
     testthat
-License: Apache License 2.0 | file LICENSE
-VignetteBuilder: knitr
+License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr
