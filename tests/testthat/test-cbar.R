@@ -27,11 +27,11 @@ test_that("cbar", {
 
   set.seed(1)
   res_1 <- cbar(.data, pre_period, post_period, seed = 1, nseasons = 96)
-  expect_true(inherits(res, "cbar"))
+  expect_true(inherits(res_1, "cbar"))
 
   set.seed(1)
   res_2 <- cbar(.data, pre_period, post_period, seed = 1)
-  expect_true(inherits(res, "cbar"))
+  expect_true(inherits(res_2, "cbar"))
 
   expect_error(cbar(.data, -3:-1, -100:-20))
   expect_error(cbar(.data, 1:100000, 1:10000))
