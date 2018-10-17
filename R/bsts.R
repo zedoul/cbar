@@ -47,6 +47,7 @@ bsts_spec_static <- function(.data,
                              niter = 1000,
                              ping = 0,
                              model_options = NULL,
+                             nseasons = 0,
                              ...) {
   y <- .data[, 2]
 
@@ -68,7 +69,12 @@ bsts_spec_static <- function(.data,
   sd_prior <- Boom::SdPrior(sigma.guess = sigma_guess,
                             upper.limit = upper_limit,
                             sample.size = sd_prior_sample_size)
+
   ss <- bsts::AddLocalLevel(list(), y, sigma.prior = sd_prior)
+
+  if (nseasons > 0) {
+    ss <- bsts::AddSeasonal(ss, y, nseasons = nseasons)
+  }
 
   structure(list(formula = paste0(names(.data)[2], sep = " ~ ."),
                  data = dplyr::select(.data, -datetime),
@@ -78,7 +84,8 @@ bsts_spec_static <- function(.data,
                  prior.df = prior_df,
                  niter = niter,
                  ping = ping,
-                 model.options = model_options),
+                 model.options = model_options,
+                 ...),
             class = "cbar.model.spec")
 }
 

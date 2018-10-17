@@ -4,8 +4,8 @@
 \alias{plot_error}
 \title{Print estimation error plot}
 \usage{
-plot_error(.cbar, xlab = "", ylab = "Estimation error", method = "diff",
-  ...)
+plot_error(.cbar, xlab = "", ylab = "Estimation error",
+  method = "diff", ...)
 }
 \arguments{
 \item{.cbar}{cbar object}

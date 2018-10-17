@@ -4,8 +4,8 @@
 \alias{plot_error_}
 \title{Print estimation error plot}
 \usage{
-plot_error_(.error, xlab = "", ylab = "Estimation error", method = "diff",
-  ...)
+plot_error_(.error, xlab = "", ylab = "Estimation error",
+  method = "diff", ...)
 }
 \arguments{
 \item{.error}{error data frame}

@@ -4,11 +4,10 @@
 \name{cbar}
 \alias{cbar}
 \alias{cbar-package}
-\alias{cbar}
 \title{\code{cbar} package}
 \usage{
-cbar(.data, ref_period, mea_period, apply_standardized = T, interval = 0.95,
-  ...)
+cbar(.data, ref_period, mea_period, apply_standardized = T,
+  interval = 0.95, ...)
 }
 \arguments{
 \item{.data}{data table with datetime, y, and predictors}
