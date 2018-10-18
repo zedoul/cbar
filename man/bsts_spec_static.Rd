@@ -30,6 +30,8 @@ bsts_spec_static(.data, sigma_guess = NULL, upper_limit = NULL,
 
 \item{model_options}{an argument for \code{bsts::bsts}}
 
+\item{nseasons}{number of seasons}
+
 \item{...}{params for \code{bsts_model}}
 }
 \value{

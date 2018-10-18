@@ -1,7 +1,7 @@
 Package: cbar
 Type: Package
 Title: Contextual Bayesian Anomaly Detection in R
-Version: 0.1.3
+Version: 0.1.4
 Author: Kim Seonghyun [aut, cre]
 Maintainer: Kim Seonghyun <zedoul@gmail.com>
 Authors@R: c(

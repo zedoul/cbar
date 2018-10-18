@@ -31,6 +31,7 @@ bsts_model <- function(.data,
 #' @param niter an argument for \code{bsts::bsts}
 #' @param ping an argument for \code{bsts::bsts}
 #' @param model_options an argument for \code{bsts::bsts}
+#' @param nseasons number of seasons
 #' @param ... params for \code{bsts_model}
 #' @return \code{cbar.model.spec} object for model specification
 #' @importFrom bsts AddLocalLevel BstsOptions
