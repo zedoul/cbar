@@ -7,7 +7,7 @@
 \title{\code{cbar} package}
 \usage{
 cbar(.data, ref_period, mea_period, apply_standardized = T,
-  interval = 0.95, ...)
+  interval = 0.95, seed = NULL, ...)
 }
 \arguments{
 \item{.data}{data table with datetime, y, and predictors}

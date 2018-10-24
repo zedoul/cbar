@@ -4,10 +4,12 @@
 \alias{response_trajectory}
 \title{Generate trajectories of the response variable}
 \usage{
-response_trajectory(.model)
+response_trajectory(.model, seed = NULL)
 }
 \arguments{
 \item{.model}{\code{bsts_model}}
+
+\item{seed}{a seed value. NULL by default}
 }
 \value{
 \code{data.frame} that contains predicted value \code{y_hat}

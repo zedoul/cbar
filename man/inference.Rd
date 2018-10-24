@@ -4,12 +4,14 @@
 \alias{inference}
 \title{Infer from predictive posetrior prediction of bsts model}
 \usage{
-inference(.model, alpha = 0.05)
+inference(.model, alpha = 0.05, seed = NULL)
 }
 \arguments{
 \item{.model}{\code{bsts} model}
 
 \item{alpha}{percentile for anomaly}
+
+\item{seed}{a seed value. NULL by default}
 }
 \value{
 \code{data.frame} with observations and predictions

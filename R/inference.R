@@ -6,9 +6,10 @@
 #' This one is used for lower and upper bounds
 #'
 #' @param .model \code{bsts_model}
+#' @param seed a seed value. NULL by default
 #' @return \code{data.frame} that contains predicted value \code{y_hat}
 #' @importFrom stats rnorm
-response_trajectory <- function(.model) {
+response_trajectory <- function(.model, seed = NULL) {
 
   # TODO: Recheck burnin rate
   n_burn_in <- bsts::SuggestBurn(0.1, .model)
@@ -21,6 +22,8 @@ response_trajectory <- function(.model) {
   .posterior_mean <- posterior_mean(.model)
 
   n_samples <-  nrow(.posterior_mean)
+
+  set.seed(seed)
   .noise <- rnorm(n = prod(dim(.posterior_mean)),
                   mean = 0, sd = sigma_obs)
   .noise <- matrix(.noise,
@@ -82,11 +85,13 @@ point_prediction <- function(y_hat,
 #'
 #' @param .model \code{bsts} model
 #' @param alpha percentile for anomaly
+#' @param seed a seed value. NULL by default
 #' @return \code{data.frame} with observations and predictions
 inference <- function(.model,
-                      alpha = .05) {
+                      alpha = .05,
+                      seed = NULL) {
   # Compute conterfactual
-  y_hat <- response_trajectory(.model)
+  y_hat <- response_trajectory(.model, seed)
   .posterior_mean <- posterior_mean(.model)
 
   point_prediction(y_hat, .posterior_mean, alpha)

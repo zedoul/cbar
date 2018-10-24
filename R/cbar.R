@@ -98,6 +98,7 @@ cbar <- function(.data,
                  mea_period,
                  apply_standardized = T,
                  interval = .95,
+                 seed = NULL,
                  ...) {
   # TODO: Consider the possibility that we may use check_data function for this
   stopifnot(colnames(.data)[1] == "datetime")
@@ -126,11 +127,11 @@ cbar <- function(.data,
 
   # TODO: Separate training and prediction
   # Predict counterfactual
-  .model <- bsts_model(target_data, ...)
+  .model <- bsts_model(target_data, seed, ...)
 
   # Summarise intervals and point estimates
   alpha <- 1 - interval
-  res <- inference(.model, alpha)
+  res <- inference(.model, alpha, seed)
   if (apply_standardized) {
     res <- destandard_pred(res, ret[["std"]])
   }
