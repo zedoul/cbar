@@ -15,5 +15,10 @@ test_that("cbar", {
 
   expect_error(cbar(.data, -3:-1, -100:-20))
   expect_error(cbar(.data, 1:100000, 1:10000))
+
+  res <- cbar(.data, pre_period, post_period, seed = 1)
+  expect_true(inherits(res, "cbar"))
+
+
 })
 

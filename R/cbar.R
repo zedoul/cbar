@@ -127,7 +127,7 @@ cbar <- function(.data,
 
   # TODO: Separate training and prediction
   # Predict counterfactual
-  .model <- bsts_model(target_data, seed, ...)
+  .model <- bsts_model(target_data, seed = seed, ...)
 
   # Summarise intervals and point estimates
   alpha <- 1 - interval
